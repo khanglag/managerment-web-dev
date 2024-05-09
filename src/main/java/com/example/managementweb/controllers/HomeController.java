@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
     @RequestMapping("")
     public String index() {
-        return "index";
+        return "View/signin";
     }
 }
