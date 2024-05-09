@@ -57,20 +57,13 @@ public class ThanhvienService implements IThanhvienService {
     @Override
     public boolean checkEmailExists(String email) {
         Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
-        if (thanhvienEntityOptional != null)
+        if (thanhvienEntityOptional.isPresent())
             return true;
         return false;
     }
 
     @Transactional
     public void changePassword(String email, String newPassword) {
-        // thanhvienEntityRepository = memberRepository.findByEmail(email);
-        // if (member != null) {
-        // member.setPassword(newPassword);
-        // memberRepository.save(member);
-        // } else {
-        // throw new IllegalArgumentException("Email không tồn tại trong hệ thống");
-        // }
         Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
         if (thanhvienEntityOptional.isPresent()) {
             ThanhvienEntity entity = thanhvienEntityOptional.get();

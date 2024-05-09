@@ -54,4 +54,16 @@ public class ThanhvienServiceTest {
         String password = "123456";
         thanhvienService.changePassword(email, password);
     }
+
+    @Test
+    public void testEmailExists() {
+        String email = "khangminh.do2003@gmail.com";
+
+        System.out.println("================================================================");
+        if (thanhvienService.checkEmailExists(email)) {
+            System.out.println("Email already exists");
+        } else {
+            System.out.println("Email don't exist");
+        }
+    }
 }
