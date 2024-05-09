@@ -47,4 +47,11 @@ public class ThanhvienServiceTest {
         System.out.println("================================================================");
         System.out.println("Thông tin thành viên:/n" + foundThanhvien);
     }
+
+    @Test
+    public void testUpdatePassword() {
+        String email = "1200104043@gmail.com";
+        String password = "123456";
+        thanhvienService.changePassword(email, password);
+    }
 }

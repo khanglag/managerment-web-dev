@@ -11,4 +11,10 @@ public interface ThanhvienEntityRepository extends JpaRepository<ThanhvienEntity
             "FROM ThanhvienEntity d " +
             "WHERE d.id = :id")
     Optional<ThanhvienEntity> findByID(String id);
+
+    @Query("SELECT d " +
+            "FROM ThanhvienEntity d " +
+            "WHERE d.email = :email")
+    Optional<ThanhvienEntity> findByEmail(String email);
+
 }

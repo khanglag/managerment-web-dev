@@ -13,4 +13,6 @@ public interface IThanhvienService {
     Optional<ThanhvienReponsDto> findByID(String id);
 
     boolean checkLogin(String id, String password);
+
+    boolean checkEmailExists(String email);
 }

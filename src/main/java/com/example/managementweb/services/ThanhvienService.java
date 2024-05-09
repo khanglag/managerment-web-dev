@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,4 +54,37 @@ public class ThanhvienService implements IThanhvienService {
         return thanhvienEntityOptional.map(thanhvienMapper::toReponsDto);
     }
 
+    @Override
+    public boolean checkEmailExists(String email) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        if (thanhvienEntityOptional != null)
+            return true;
+        return false;
+    }
+
+    @Transactional
+    public void changePassword(String email, String newPassword) {
+        // thanhvienEntityRepository = memberRepository.findByEmail(email);
+        // if (member != null) {
+        // member.setPassword(newPassword);
+        // memberRepository.save(member);
+        // } else {
+        // throw new IllegalArgumentException("Email không tồn tại trong hệ thống");
+        // }
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        if (thanhvienEntityOptional.isPresent()) {
+            ThanhvienEntity entity = thanhvienEntityOptional.get();
+            entity.setPassword(newPassword);
+            ThanhvienEntityRepository.save(entity);
+
+            System.out.println("==========================\nMật khẩu đã được cập nhật thành công cho người dùng ");
+        } else {
+            System.out.println("Không tìm thấy người dùng có tên ");
+        }
+        // if (thanhvienEntity != null) {
+        // ThanhvienEntityRepository.setPassword(newPassword);
+
+        // }
+
+    }
 }

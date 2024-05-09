@@ -29,6 +29,11 @@ public class userController {
         return "View/register";
     }
 
+    @RequestMapping("/forgotpassword")
+    public String forgotpassword() {
+        return "View/forgotpassword";
+    }
+
     @PostMapping("/checkLogin")
     public String checkLogin(@RequestParam("mssv") String mssv,
             @RequestParam("password") String password, Model model) {
