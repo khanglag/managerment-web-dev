@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
+import java.util.Optional;
+
 @SpringBootTest
 @SpringJUnitWebConfig
 public class ThanhvienServiceTest {
@@ -19,10 +24,27 @@ public class ThanhvienServiceTest {
 
     @Test
     public void testFindAll() {
-        List<ThanhvienReponsDto> result =thanhvienService.findAll();
+        List<ThanhvienReponsDto> result = thanhvienService.findAll();
         System.out.println(appUtil.toJson(result));
     }
-    @Test void count(){
+
+    @Test
+    void count() {
         System.out.println(thanhvienService.count());
+    }
+
+    @Test
+    public void testFindByID() {
+        // Arrange
+        String maTV = "1190308010"; // Giả sử mã thành viên cần tìm
+
+        // Act
+        Optional<ThanhvienReponsDto> result = thanhvienService.findByID(maTV);
+
+        // Assert
+        assertTrue(result.isPresent()); // Kiểm tra xem kết quả trả về có tồn tại không
+        ThanhvienReponsDto foundThanhvien = result.get();
+        System.out.println("================================================================");
+        System.out.println("Thông tin thành viên:/n" + foundThanhvien);
     }
 }

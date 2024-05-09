@@ -13,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,4 +37,20 @@ public class ThanhvienService implements IThanhvienService {
     public long count() {
         return thanhvienEntityRepository.count();
     }
+
+    @Override
+    public boolean checkLogin(String id, String password) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        if (thanhvienEntityOptional.isPresent() && thanhvienEntityOptional.get().getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Optional<ThanhvienReponsDto> findByID(String id) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        return thanhvienEntityOptional.map(thanhvienMapper::toReponsDto);
+    }
+
 }
