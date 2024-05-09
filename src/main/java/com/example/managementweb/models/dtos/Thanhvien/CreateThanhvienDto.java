@@ -14,6 +14,7 @@ import lombok.*;
 @Builder
 public class CreateThanhvienDto implements Serializable {
     @NotBlank(message = "Mã thành viên không được để trống")
+    
     private String id;
 
     @NotBlank(message = "Họ tên không được để trống")
