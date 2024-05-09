@@ -9,8 +9,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.managementweb.services.ThanhvienService;
 
+import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class userController {
@@ -30,13 +31,18 @@ public class userController {
 
     @PostMapping("/checkLogin")
     public String checkLogin(@RequestParam("mssv") String mssv,
-            @RequestParam("password") String password) {
+            @RequestParam("password") String password, Model model) {
         System.out.println("================================================================");
         System.out.println("MSSV: " + mssv);
         System.out.println("Password: " + password);
         if (thanhvienService.checkLogin(mssv, password))
             return "View/user";
-        return "View/checkLogin";
+        model.addAttribute("errorMessage", "Email hoặc mật khẩu không đúng. Vui lòng thử lại.");
+        return "redirect:/signin";
+    }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "View/signin";
     }
 }
