@@ -4,7 +4,7 @@ import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
 
 import java.util.List;
 
-public interface IThanhvienServer {
+public interface IThanhvienService {
 
     List<ThanhvienReponsDto> findAll();
 
