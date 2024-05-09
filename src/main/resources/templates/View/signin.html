@@ -43,9 +43,10 @@
         <h1 class="login__title">Đăng nhập</h1>
         <div class="login__inputs">
           <div class="login__box">
-            <input type="text" name="mssv" placeholder="MSSV" class="login__input" />
+            <input type="text" name="mssv" placeholder="MSSV" class="login__input" Required/>
             <i class="fa-solid fa-graduation-cap"></i>
           </div>
+          
           <div class="login__box">
             <input
               type="password"
@@ -53,6 +54,7 @@
               class="login__input"
               id="login__input"
               name="password"
+              Required
             />
             <button
               class="btn btn__eye__nor"
@@ -98,5 +100,28 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" id="modalBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Email hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   </body>
 </html>

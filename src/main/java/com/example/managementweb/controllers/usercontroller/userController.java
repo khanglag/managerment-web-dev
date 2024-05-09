@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.managementweb.services.ThanhvienService;
 
@@ -33,14 +34,9 @@ public class userController {
         System.out.println("================================================================");
         System.out.println("MSSV: " + mssv);
         System.out.println("Password: " + password);
-        if (thanhvienService.checkLogin(mssv, password)) {
+        if (thanhvienService.checkLogin(mssv, password))
             return "View/user";
-        }
-        return "View/signin";
-    }
+        return "View/checkLogin";
 
-    @GetMapping("/logout")
-    public String logout() {
-        return "View/signin";
     }
 }
