@@ -47,8 +47,7 @@ public class HomeController {
             session.setAttribute("MaTV", mssv);
             return "View/user";
         }
-        models.addAttribute("Error", "Mã thành viên hoặc mật khẩu không chính xác");
-        return "redirect:/signin";
+        return "redirect:/signin?passwordwrong";
     }
 
     @GetMapping("/logout")
@@ -62,18 +61,12 @@ public class HomeController {
             @RequestParam("phone") String phone, @RequestParam("email") String email,
             @RequestParam("department") String department, @RequestParam("faculty") String faculty,
             @RequestParam("password") String password, @RequestParam("xnpassword") String xnpassword) {
-        System.out.println("================================");
-        System.out.println("mssv: " + mssv);
-        System.out.println("name: " + name);
-        System.out.println("phone: " + phone);
-        System.out.println(email);
-        System.out.println(department);
-        System.out.println(faculty);
-        System.out.println(password);
-        System.out.println(xnpassword);
-        if (!password.equals(xnpassword)) {
-            models.addAttribute("Error", "Mật khẩu không khớp");
-            return "redirect:/register";
+        if (thanhvienService.findByID(mssv).isPresent()) {
+            return "redirect:/register?mssvexist";
+        } else if (thanhvienService.checkEmailExists(email)) {
+            return "redirect:/register?emailexist";
+        } else if (!password.equals(xnpassword)) {
+            return "redirect:/register?matkhaukhongkhop";
         } else {
             ThanhvienEntity thanhvienEntity = new ThanhvienEntity();
             thanhvienEntity.setId(Integer.parseInt(mssv));
