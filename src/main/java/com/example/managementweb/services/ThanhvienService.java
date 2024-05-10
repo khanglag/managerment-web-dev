@@ -36,4 +36,6 @@ public class ThanhvienService implements IThanhvienService {
     public long count() {
         return thanhvienEntityRepository.count();
     }
+
+    
 }
