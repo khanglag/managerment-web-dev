@@ -11,6 +11,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ThanhvienReponsDto {
     private String id;
+
+    @Override
+    public String toString() {
+        return "ThanhvienReponsDto{" +
+                "id='" + id + '\'' +
+                ", hoten='" + hoten + '\'' +
+                ", khoa='" + khoa + '\'' +
+                ", nganh='" + nganh + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     private String hoten;
     private String khoa;
     private String nganh;

@@ -1,5 +1,6 @@
 package com.example.managementweb.services.interfaces;
 
+import com.example.managementweb.models.dtos.Thanhvien.CreateThanhvienDto;
 import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
 import com.example.managementweb.models.entities.ThanhvienEntity;
 
@@ -11,6 +12,7 @@ public interface IThanhvienService {
     List<ThanhvienReponsDto> findAll();
 
     long count();
+
 
     Optional<ThanhvienReponsDto> findByID(String id);
 

@@ -39,6 +39,7 @@ public class ThanhvienService implements IThanhvienService {
         return thanhvienEntityRepository.count();
     }
 
+
     @Override
     public boolean checkLogin(String id, String password) {
         Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
@@ -80,4 +81,5 @@ public class ThanhvienService implements IThanhvienService {
     public ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien) {
         return ThanhvienEntityRepository.save(thanhvien);
     }
+
 }

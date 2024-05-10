@@ -1,40 +1,14 @@
-package com.example.managementweb.models.entities;
-
-import jakarta.persistence.*;
-import lombok.*;
+package com.example.managementweb.models.dtos.Thongtinsd;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "thongtinsd")
-public class ThongtinsdEntity {
-    @Id
-    @Column(name = "MaTT", nullable = false)
+public class ThongtinsdReponsDto {
     private Integer id;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "MaTV", nullable = false)
-    private ThanhvienEntity maTV;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MaTB")
-    private ThietbiEntity maTB;
-
-    @Column(name = "tgvao")
+    private Integer maTVId;
+    private Integer maTBId;
     private LocalDate tgvao;
-
-    @Column(name = "tgmuon")
     private LocalDate tgmuon;
-
-    @Column(name = "tgtra")
     private LocalDate tgtra;
-
-    @Column(name = "tgdatcho")
     private LocalDate tgdatcho;
 
     public Integer getId() {
@@ -45,20 +19,20 @@ public class ThongtinsdEntity {
         this.id = id;
     }
 
-    public ThanhvienEntity getMaTV() {
-        return maTV;
+    public Integer getMaTVId() {
+        return maTVId;
     }
 
-    public void setMaTV(ThanhvienEntity maTV) {
-        this.maTV = maTV;
+    public void setMaTVId(Integer maTVId) {
+        this.maTVId = maTVId;
     }
 
-    public ThietbiEntity getMaTB() {
-        return maTB;
+    public Integer getMaTBId() {
+        return maTBId;
     }
 
-    public void setMaTB(ThietbiEntity maTB) {
-        this.maTB = maTB;
+    public void setMaTBId(Integer maTBId) {
+        this.maTBId = maTBId;
     }
 
     public LocalDate getTgvao() {
