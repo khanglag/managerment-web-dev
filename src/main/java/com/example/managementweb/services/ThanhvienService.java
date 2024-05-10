@@ -41,7 +41,7 @@ public class ThanhvienService implements IThanhvienService {
 
     @Override
     public boolean checkLogin(String id, String password) {
-        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        Optional<ThanhvienEntity> thanhvienEntityOptional = thanhvienEntityRepository.findByID(id);
         if (thanhvienEntityOptional.isPresent() && thanhvienEntityOptional.get().getPassword().equals(password)) {
             return true;
         }
@@ -50,13 +50,13 @@ public class ThanhvienService implements IThanhvienService {
 
     @Override
     public Optional<ThanhvienReponsDto> findByID(String id) {
-        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        Optional<ThanhvienEntity> thanhvienEntityOptional = thanhvienEntityRepository.findByID(id);
         return thanhvienEntityOptional.map(thanhvienMapper::toReponsDto);
     }
 
     @Override
     public boolean checkEmailExists(String email) {
-        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        Optional<ThanhvienEntity> thanhvienEntityOptional = thanhvienEntityRepository.findByEmail(email);
         if (thanhvienEntityOptional.isPresent())
             return true;
         return false;
@@ -64,11 +64,11 @@ public class ThanhvienService implements IThanhvienService {
 
     @Transactional
     public void changePassword(String email, String newPassword) {
-        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        Optional<ThanhvienEntity> thanhvienEntityOptional = thanhvienEntityRepository.findByEmail(email);
         if (thanhvienEntityOptional.isPresent()) {
             ThanhvienEntity entity = thanhvienEntityOptional.get();
             entity.setPassword(newPassword);
-            ThanhvienEntityRepository.save(entity);
+            thanhvienEntityRepository.save(entity);
 
             System.out.println("==========================\nMật khẩu đã được cập nhật thành công cho người dùng ");
         } else {
@@ -78,7 +78,7 @@ public class ThanhvienService implements IThanhvienService {
 
     @Override
     public ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien) {
-        return ThanhvienEntityRepository.save(thanhvien);
+        return thanhvienEntityRepository.save(thanhvien);
     }
 
 }
