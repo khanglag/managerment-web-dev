@@ -11,8 +11,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,5 +39,47 @@ public class ThanhvienService implements IThanhvienService {
         return thanhvienEntityRepository.count();
     }
 
-    
+
+    @Override
+    public boolean checkLogin(String id, String password) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        if (thanhvienEntityOptional.isPresent() && thanhvienEntityOptional.get().getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Optional<ThanhvienReponsDto> findByID(String id) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByID(id);
+        return thanhvienEntityOptional.map(thanhvienMapper::toReponsDto);
+    }
+
+    @Override
+    public boolean checkEmailExists(String email) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        if (thanhvienEntityOptional.isPresent())
+            return true;
+        return false;
+    }
+
+    @Transactional
+    public void changePassword(String email, String newPassword) {
+        Optional<ThanhvienEntity> thanhvienEntityOptional = ThanhvienEntityRepository.findByEmail(email);
+        if (thanhvienEntityOptional.isPresent()) {
+            ThanhvienEntity entity = thanhvienEntityOptional.get();
+            entity.setPassword(newPassword);
+            ThanhvienEntityRepository.save(entity);
+
+            System.out.println("==========================\nMật khẩu đã được cập nhật thành công cho người dùng ");
+        } else {
+            System.out.println("Không tìm thấy người dùng có tên ");
+        }
+    }
+
+    @Override
+    public ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien) {
+        return ThanhvienEntityRepository.save(thanhvien);
+    }
+
 }

@@ -1,0 +1,210 @@
+
+:root {
+ 
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+  
+    --body-font: "Poppins", sans-serif;
+    --h1-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .813rem;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Freeman", sans-serif;
+    font-weight: 400;
+    font-style:normal;
+  }
+  
+  body,
+  input,
+  button {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+   
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*=============== REGISTER ===============*/
+  .register {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+  }
+  
+  .login-register__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .register__form {
+    position: relative;
+    margin-inline: 1.5rem;
+    background-color: hsla(0, 0%, 100%, .01);
+    border: 2px solid hsla(0, 0%, 100%, .7);
+    padding: 2.5rem 1rem;
+    color: var(--white-color);
+    border-radius: 1rem;
+    /* backdrop-filter: blur(16px); */
+  }
+  
+  .register__title {
+    text-align: center;
+    font-size: var(--h1-font-size);
+    margin-bottom: 1.25rem;
+    
+  }
+  
+  .register__inputs, 
+  .register__box {
+    display: grid;
+  }
+  
+  .register__inputs {
+    row-gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .register__box {
+    width: 240px;
+    height: 60px;
+    grid-template-columns: 1fr max-content;
+    column-gap: .75rem;
+    align-items: center;
+    border: 2px solid hsla(0, 0%, 100%, .7);
+    padding-inline: 1.25rem;
+    border-radius: 4rem;
+  }
+  
+  .register__input, 
+  .register__button {
+    border: none;
+    outline: none;
+    /* margin-top: 10px; */
+  }
+  
+  .register__input {
+    width: 100%;
+    background: none;
+    color: var(--white-color);
+    padding-block: 1rem;
+  }
+  
+  .register__input::placeholder {
+    color: var(--white-color);
+  }
+  
+  .register__box i {
+    font-size: 1.25rem;
+  }
+  
+  .login__check, 
+  .login__check-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .login__check {
+    margin-bottom: 1rem;
+    font-size: var(--small-font-size);
+  }
+  
+  .login__check-box {
+    column-gap: .5rem;
+  }
+  
+  .login__check-input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--white-color);
+  }
+  
+  .login__forgot {
+    color: var(--white-color);
+  }
+  
+  .login__forgot:hover {
+    text-decoration: underline;
+  }
+  
+  .register__button {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--white-color);
+    border-radius: 4rem;
+    color: var(--black-color);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .login__register {
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+  
+  }
+  
+  .login__register a {
+    color: red;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .login__register a:hover {
+    text-decoration: none;
+    color: red;
+  }
+  .login__fogot__password{
+      text-align:right;
+      margin-bottom: 1rem;
+  }
+  .fogot__password{
+      text-decoration: none;
+      color: white;
+  }
+  .fogot__password:hover{
+      text-decoration: none;
+      color: palevioletred;
+  }
+  
+  .btn__eye__nor{
+      color: white !important;
+      padding: 0 !important;
+  }
+  .btn__eye__blind{
+      display: none !important;
+      color: white !important;
+      padding: 0 !important;
+  }
+  .combobox__department__faculty{
+    height: 60px;
+    width: 240px;
+  }
+  @media screen and (min-width: 576px) {
+    .register {
+      justify-content: center;
+    }
+    .register__form {
+      width: 590px;
+      padding-inline: 2.5rem;
+    }
+    .register__title {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  
