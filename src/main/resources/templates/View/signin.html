@@ -70,8 +70,11 @@
             >
               <i class="fa-solid fa-eye-slash eye__blind"></i>
             </button>
+           
           </div>
-          <p style="color:red" th:text="${Error}"></p>
+          <div th:if="${param.passwordwrong}">
+            <div class="alert alert-info"> Mật khẩu không chính xác</div>
+        </div>
         </div>
         <div class="login__fogot__password">
           <a href="@{forgotpassword}" onclick="redirectToPage('forgotpassword')" class="fogot__password">Quên mật khẩu?</a>

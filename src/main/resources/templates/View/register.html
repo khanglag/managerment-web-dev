@@ -47,6 +47,7 @@
             <div class="register__box">
               <input type="text" placeholder="MSSV" name="mssv" class="register__input" Required/>
               <i class="fa-solid fa-graduation-cap"></i>
+              
             </div>
             <div class="register__box">
               <input type="text" placeholder="Họ tên" name ="name" class="register__input" Required/>
@@ -73,6 +74,7 @@
               />
               <i class="fa-solid fa-envelope"></i>
             </div>
+            
           </div>
 
           <div class="d-flex justify-content-between">
@@ -119,6 +121,15 @@
               />
             </div>
           </div>
+          <div th:if="${param.matkhaukhongkhop}">
+            <div class="alert alert-info"> Mật khẩu không khớp</div>
+        </div>
+        <div th:if="${param.emailexist}">
+          <div class="alert alert-info"> Email đã tồn tại</div>
+        </div>
+        <div th:if="${param.mssvexist}">
+          <div class="alert alert-info"> MSSV đã tồn tại</div>
+        </div>
         </div>
 
         <button type="submit" class="register__button">Đăng kí</button>
