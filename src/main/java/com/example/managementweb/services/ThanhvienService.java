@@ -74,10 +74,10 @@ public class ThanhvienService implements IThanhvienService {
         } else {
             System.out.println("Không tìm thấy người dùng có tên ");
         }
-        // if (thanhvienEntity != null) {
-        // ThanhvienEntityRepository.setPassword(newPassword);
+    }
 
-        // }
-
+    @Override
+    public ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien) {
+        return ThanhvienEntityRepository.save(thanhvien);
     }
 }

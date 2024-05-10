@@ -1,6 +1,8 @@
 package com.example.managementweb.services.interfaces;
 
 import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+import com.example.managementweb.models.entities.ThanhvienEntity;
+
 import java.util.Optional;
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface IThanhvienService {
     boolean checkLogin(String id, String password);
 
     boolean checkEmailExists(String email);
+
+    ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien);
 }

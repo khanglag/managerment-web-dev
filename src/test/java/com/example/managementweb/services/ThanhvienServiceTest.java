@@ -1,6 +1,7 @@
 package com.example.managementweb.services;
 
 import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+import com.example.managementweb.models.entities.ThanhvienEntity;
 import com.example.managementweb.util.AppUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,35 @@ public class ThanhvienServiceTest {
         } else {
             System.out.println("Email don't exist");
         }
+    }
+
+    @Test
+    public void testCreateThanhVien() {
+        Integer id = 123456789;
+        String maTV = "123456789";
+        String name = "Nguyen Van A";
+        String department = "SP KHTN";
+        String nganh = "Sư phạm địa lý";
+        String phone = "123456789";
+        String password = "123456";
+        String email = "a@a";
+        ThanhvienEntity thanhvienEntity = new ThanhvienEntity();
+        thanhvienEntity.setId(id);
+        thanhvienEntity.setHoten(name);
+        thanhvienEntity.setKhoa(department);
+        thanhvienEntity.setNganh(nganh);
+        thanhvienEntity.setSdt(phone);
+        thanhvienEntity.setPassword(password);
+        thanhvienEntity.setEmail(email);
+        thanhvienService.createThanhvien(thanhvienEntity);
+
+        Optional<ThanhvienReponsDto> result = thanhvienService.findByID(maTV);
+
+        // Assert
+        assertTrue(result.isPresent()); // Kiểm tra xem kết quả trả về có tồn tại không
+        ThanhvienReponsDto foundThanhvien = result.get();
+        System.out.println("================================================================");
+        System.out.println("Thông tin thành viên:/n" + foundThanhvien);
+
     }
 }
