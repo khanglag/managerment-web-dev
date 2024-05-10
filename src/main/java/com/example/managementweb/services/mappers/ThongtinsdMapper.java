@@ -8,7 +8,7 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring", uses = {ThanhvienMapper.class})
+@Mapper(componentModel = "spring", uses = {ThongtinsdMapper.class})
 public interface ThongtinsdMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     ReservationsDto toReponsDTO (ReservationsDto reservationsDto);
