@@ -19,14 +19,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ThanhvienService implements IThanhvienService {
-    ThanhvienEntityRepository ThanhvienEntityRepository;
+    ThanhvienEntityRepository thanhvienEntityRepository;
     ThanhvienMapper thanhvienMapper;
-    ObjectsValidator<CreateThanhvienDto> ThanhvienValidateor;
-    private final ThanhvienEntityRepository thanhvienEntityRepository;
+    ObjectsValidator<CreateThanhvienDto> thanhvienValidator;
 
     @Override
     public List<ThanhvienReponsDto> findAll() {
-        List<ThanhvienEntity> thanhvienEntityList = ThanhvienEntityRepository.findAll();
+        List<ThanhvienEntity> thanhvienEntityList = thanhvienEntityRepository.findAll();
         return thanhvienEntityList.stream()
                 .map(thanhvienMapper::toReponsDto)
                 .collect(Collectors.toList());

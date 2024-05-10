@@ -7,6 +7,5 @@ import java.util.List;
 public interface IThanhvienService {
 
     List<ThanhvienReponsDto> findAll();
-
     long count();
 }

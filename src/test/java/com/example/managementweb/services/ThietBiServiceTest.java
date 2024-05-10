@@ -1,27 +1,37 @@
-// package com.example.managementweb.services;
+package com.example.managementweb.services;
 
-// import com.example.managementweb.models.dtos.ThietBi.ThietBiDTO;
-// import com.example.managementweb.util.AppUtil;
-// import org.junit.jupiter.api.Test;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.context.SpringBootTest;
-// import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
+import com.example.managementweb.util.AppUtil;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
-// import java.util.List;
+import java.util.List;
 
-// @SpringBootTest
-// @SpringJUnitWebConfig
-// public class ThietBiServiceTest {
+@SpringBootTest
+@SpringJUnitWebConfig
+public class ThietBiServiceTest {
 
-//     @Autowired
-//     private ThietBiService service;
+    @Autowired
+    private ThietBiService service;
 
-//     @Autowired
-//     private AppUtil util;
+    @Autowired
+    private AppUtil appUtil;
 
-//     @Test
-//     public void testFindByName() {
-//         List<ThietBiDTO> list = service.findByName("Micro");
-//         System.out.println(util.toJson(list));
-//     }
-// }
+    @Test
+     void findAll() {
+        List<ThietbiReponsDto> result = service.findAll();
+        System.out.println(appUtil.toJson(result));
+
+    }
+
+
+    @Test
+    public void testFindByName() {
+        List<ThietbiReponsDto> list = service.findByTenTB("Micro");
+        System.out.println(appUtil.toJson(list));
+    }
+    
+}

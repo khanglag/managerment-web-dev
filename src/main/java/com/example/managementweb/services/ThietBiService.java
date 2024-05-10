@@ -1,28 +1,50 @@
-// package com.example.managementweb.services;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
-// import java.util.List;
-// import java.util.stream.Collectors;
-// import com.example.managementweb.models.dtos.ThietBi.ThietBiDTO;
-// import com.example.managementweb.models.entities.ThietbiEntity;
-// import com.example.managementweb.repositories.ThietbiEntityRepository;
-// import com.example.managementweb.services.interfaces.IThietBiService;
-// import com.example.managementweb.services.mappers.ThietBiMapper;
-// import lombok.AccessLevel;
-// import lombok.RequiredArgsConstructor;
-// import lombok.experimental.FieldDefaults;
+package com.example.managementweb.services;
 
-// @Service
-// @RequiredArgsConstructor
-// @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-// public class ThietBiService implements IThietBiService {
+import com.example.managementweb.models.dtos.Thanhvien.CreateThanhvienDto;
+import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+import com.example.managementweb.models.dtos.ThietBi.CreataThietBiDto;
+import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
+import com.example.managementweb.models.entities.ThanhvienEntity;
+import com.example.managementweb.models.entities.ThietbiEntity;
+import com.example.managementweb.repositories.ThanhvienEntityRepository;
+import com.example.managementweb.repositories.ThietbiEntityRepository;
+import com.example.managementweb.services.interfaces.IThanhvienService;
+import com.example.managementweb.services.interfaces.IThietBiService;
+import com.example.managementweb.services.mappers.ThanhvienMapper;
+import com.example.managementweb.services.mappers.ThietBiMapper;
+import com.example.managementweb.util.ObjectsValidator;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import org.springframework.stereotype.Service;
 
-//     private final ThietbiEntityRepository repository;
+import java.util.List;
+import java.util.stream.Collectors;
 
-//     private final ThietBiMapper mapper;
+@Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+public class ThietBiService implements IThietBiService {
+    ThietbiEntityRepository repository;
+    ThietBiMapper mapper;
+    ObjectsValidator<CreataThietBiDto> validator;
 
-//     public List<ThietBiDTO> findByName(String TenTB) {
-//         List<ThietbiEntity> entities = repository.findByName(TenTB);
-//         return entities.stream().map(mapper::toDto).collect(Collectors.toList());
-//     }
-// }
+    @Override
+    public List<ThietbiReponsDto> findAll() {
+        List<ThietbiEntity> entities = repository.findAll();
+        return entities.stream()
+                .map(mapper::toReponsDto)
+                .collect(Collectors.toList());
+    }
+
+    //Tìm kiếm theo tên thiết bị
+    @Override
+    public List<ThietbiReponsDto> findByTenTB(String tenTB) {
+        List<ThietbiEntity> entities = repository.findByTenTB(tenTB);
+        return entities.stream()
+                .map(mapper::toReponsDto)
+                .collect(Collectors.toList());
+    }
+
+    
+}

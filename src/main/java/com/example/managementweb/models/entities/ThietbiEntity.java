@@ -22,7 +22,7 @@ public class ThietbiEntity {
     private String tenTB;
 
     @Lob
-    @Column(name = "MotaTB")
+    @Column(name = "motatb")
     private String motaTB;
 
     @OneToMany(mappedBy = "maTB")

@@ -1,15 +1,12 @@
-// package com.example.managementweb.services.mappers;
+package com.example.managementweb.services.mappers;
 
-// import org.mapstruct.Mapper;
+import com.example.managementweb.models.dtos.ThietBi.CreataThietBiDto;
+import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
+import com.example.managementweb.models.entities.ThietbiEntity;
 
-// import com.example.managementweb.models.dtos.ThietBi.ThietBiDTO;
-// import com.example.managementweb.models.dtos.ThietBi.ThietbiCreateDto;
-// import com.example.managementweb.models.entities.ThietbiEntity;
-
-// @Mapper(componentModel = "spring")
-// public interface ThietBiMapper {
-//     ThietbiEntity toEntity(ThietbiCreateDto createThietbiDto);
-
-//     ThietBiDTO toDto(ThietbiEntity entity);
-
-// }
+import org.mapstruct.Mapper;
+@Mapper(componentModel = "spring", uses = {ThietBiMapper.class})
+public interface ThietBiMapper {
+    ThietbiEntity toEntity(CreataThietBiDto creataThietBiDto);
+    ThietbiReponsDto toReponsDto(ThietbiEntity thietbiEntity);
+}
