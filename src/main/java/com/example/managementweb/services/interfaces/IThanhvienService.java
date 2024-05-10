@@ -15,9 +15,16 @@ public interface IThanhvienService {
 
     Optional<ThanhvienReponsDto> findByID(String id);
 
+    ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien);
+
     boolean checkLogin(String id, String password);
 
     boolean checkEmailExists(String email);
 
-    ThanhvienEntity createThanhvien(ThanhvienEntity thanhvien);
+    boolean checkPassword(String id, String passwrod);
+
+    void changePassword(String id, String newPassword);
+    
+    boolean checkConfirmPassword(String password, String confirmpassword);
+
 }

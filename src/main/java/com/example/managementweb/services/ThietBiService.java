@@ -1,16 +1,11 @@
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thanhvien.CreateThanhvienDto;
-import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+
 import com.example.managementweb.models.dtos.ThietBi.CreataThietBiDto;
 import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
-import com.example.managementweb.models.entities.ThanhvienEntity;
 import com.example.managementweb.models.entities.ThietbiEntity;
-import com.example.managementweb.repositories.ThanhvienEntityRepository;
 import com.example.managementweb.repositories.ThietbiEntityRepository;
-import com.example.managementweb.services.interfaces.IThanhvienService;
 import com.example.managementweb.services.interfaces.IThietBiService;
-import com.example.managementweb.services.mappers.ThanhvienMapper;
 import com.example.managementweb.services.mappers.ThietBiMapper;
 import com.example.managementweb.util.ObjectsValidator;
 import lombok.AccessLevel;

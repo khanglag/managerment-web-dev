@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class ThanhvienServiceTest {
     public void testUpdatePassword() {
         String email = "1200104043@gmail.com";
         String password = "123456";
-        thanhvienService.changePassword(email, password);
+        thanhvienService.changePasswordByEmail(email, password);
     }
 
     @Test
@@ -97,5 +98,30 @@ public class ThanhvienServiceTest {
         System.out.println("================================================================");
         System.out.println("Thông tin thành viên:/n" + foundThanhvien);
 
+    }
+
+    @Test
+    public void checkPassword() {
+        String id = "1190308010";
+        String password = "123";
+        boolean result = thanhvienService.checkPassword(id, password);
+        System.out.println("Mật khẩu" + result+ "đúng cho thành viên với ID: " + id);
+    }
+ 
+    @Test
+    public void changePassword() {
+        String id = "1190308010";
+        String newPassword = "123456";
+        thanhvienService.changePassword(id, newPassword);
+        System.out.println("Password changed successfully for member with ID: " + id);
+
+    }
+
+    @Test
+    public void checkConfirmPassword() {
+        String password = "123456";
+        String confirmPass = "123";
+        boolean result = thanhvienService.checkConfirmPassword(password, confirmPass);
+        System.out.println("Kết quả " + result);
     }
 }

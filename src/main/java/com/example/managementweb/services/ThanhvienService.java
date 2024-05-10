@@ -63,7 +63,7 @@ public class ThanhvienService implements IThanhvienService {
     }
 
     @Transactional
-    public void changePassword(String email, String newPassword) {
+    public void changePasswordByEmail(String email, String newPassword) {
         Optional<ThanhvienEntity> thanhvienEntityOptional = thanhvienEntityRepository.findByEmail(email);
         if (thanhvienEntityOptional.isPresent()) {
             ThanhvienEntity entity = thanhvienEntityOptional.get();
@@ -81,4 +81,34 @@ public class ThanhvienService implements IThanhvienService {
         return thanhvienEntityRepository.save(thanhvien);
     }
 
+
+    //Kiểm tra Password
+    @Override
+    public boolean checkPassword(String id, String password) {
+        Optional<ThanhvienEntity> optional = thanhvienEntityRepository.findByID(id);
+        if (optional.isPresent() && optional.get().getPassword().equals(password)) {
+            return true;
+        }
+        return false;
+    }
+    // Đổi Password
+    @Override
+    @Transactional
+    public void changePassword(String id, String newPassword) {
+        Optional<ThanhvienEntity> optional  = thanhvienEntityRepository.findByID(id);
+        if(optional.isPresent()) {
+            ThanhvienEntity entity = optional.get();
+            entity.setPassword(newPassword);
+            thanhvienEntityRepository.save(entity);
+        }
+    }
+
+    //Confirm Password
+    @Override
+    public boolean checkConfirmPassword(String password, String confirmPassword) {
+        if (password.equals(confirmPassword)) {
+            return true;
+        }
+        return false;
+    }
 }

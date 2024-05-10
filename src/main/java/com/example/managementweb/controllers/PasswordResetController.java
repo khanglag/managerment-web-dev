@@ -25,7 +25,7 @@ public class PasswordResetController {
         if (!thanhvienService.checkEmailExists(email))
             return "Ghi sau";
         String password = generateNewPassword();
-        thanhvienService.changePassword(email, password);
+        thanhvienService.changePasswordByEmail(email, password);
 
         String newPassword = generateNewPassword();
         emailService.sendSimpleMessage(email, "Đặt lại mật khẩu", "Mật khẩu mới của bạn là: " + newPassword);
