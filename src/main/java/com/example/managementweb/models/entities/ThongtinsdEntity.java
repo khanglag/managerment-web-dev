@@ -3,7 +3,7 @@ package com.example.managementweb.models.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -26,16 +26,16 @@ public class ThongtinsdEntity {
     private ThietbiEntity maTB;
 
     @Column(name = "tgvao")
-    private Instant tgvao;
+    private LocalDate tgvao;
 
     @Column(name = "tgmuon")
-    private Instant tgmuon;
+    private LocalDate tgmuon;
 
     @Column(name = "tgtra")
-    private Instant tgtra;
+    private LocalDate tgtra;
 
     @Column(name = "tgdatcho")
-    private Instant tgdatcho;
+    private LocalDate tgdatcho;
 
     public Integer getId() {
         return id;
@@ -61,36 +61,35 @@ public class ThongtinsdEntity {
         this.maTB = maTB;
     }
 
-    public Instant getTgvao() {
+    public LocalDate getTgvao() {
         return tgvao;
     }
 
-    public void setTgvao(Instant tgvao) {
+    public void setTgvao(LocalDate tgvao) {
         this.tgvao = tgvao;
     }
 
-    public Instant getTgmuon() {
+    public LocalDate getTgmuon() {
         return tgmuon;
     }
 
-    public void setTgmuon(Instant tgmuon) {
+    public void setTgmuon(LocalDate tgmuon) {
         this.tgmuon = tgmuon;
     }
 
-    public Instant getTgtra() {
+    public LocalDate getTgtra() {
         return tgtra;
     }
 
-    public void setTgtra(Instant tgtra) {
+    public void setTgtra(LocalDate tgtra) {
         this.tgtra = tgtra;
     }
 
-    public Instant getTgdatcho() {
+    public LocalDate getTgdatcho() {
         return tgdatcho;
     }
 
-    public void setTgdatcho(Instant tgdatcho) {
+    public void setTgdatcho(LocalDate tgdatcho) {
         this.tgdatcho = tgdatcho;
     }
-
 }

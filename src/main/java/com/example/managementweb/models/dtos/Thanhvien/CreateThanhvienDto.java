@@ -17,6 +17,19 @@ public class CreateThanhvienDto implements Serializable {
     
     private String id;
 
+    @Override
+    public String toString() {
+        return "CreateThanhvienDto{" +
+                "id='" + id + '\'' +
+                ", hoten='" + hoten + '\'' +
+                ", khoa='" + khoa + '\'' +
+                ", nganh='" + nganh + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     @NotBlank(message = "Họ tên không được để trống")
     private String hoten;
 
