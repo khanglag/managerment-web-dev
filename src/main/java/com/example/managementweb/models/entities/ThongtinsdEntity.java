@@ -37,59 +37,25 @@ public class ThongtinsdEntity {
     @Column(name = "tgdatcho")
     private LocalDate tgdatcho;
 
-    public Integer getId() {
-        return id;
+    public Integer getMaTV() {
+        return maTV != null ? maTV.getId() : null;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getMaTB() {
+        return maTB != null ? maTB.getId() : null;
     }
 
-    public ThanhvienEntity getMaTV() {
-        return maTV;
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", maTV='" + getMaTV() + "'" +
+                ", maTB='" + getMaTB() + "'" +
+                ", tgvao='" + getTgvao() + "'" +
+                ", tgmuon='" + getTgmuon() + "'" +
+                ", tgtra='" + getTgtra() + "'" +
+                ", tgdatcho='" + getTgdatcho() + "'" +
+                "}";
     }
 
-    public void setMaTV(ThanhvienEntity maTV) {
-        this.maTV = maTV;
-    }
-
-    public ThietbiEntity getMaTB() {
-        return maTB;
-    }
-
-    public void setMaTB(ThietbiEntity maTB) {
-        this.maTB = maTB;
-    }
-
-    public LocalDate getTgvao() {
-        return tgvao;
-    }
-
-    public void setTgvao(LocalDate tgvao) {
-        this.tgvao = tgvao;
-    }
-
-    public LocalDate getTgmuon() {
-        return tgmuon;
-    }
-
-    public void setTgmuon(LocalDate tgmuon) {
-        this.tgmuon = tgmuon;
-    }
-
-    public LocalDate getTgtra() {
-        return tgtra;
-    }
-
-    public void setTgtra(LocalDate tgtra) {
-        this.tgtra = tgtra;
-    }
-
-    public LocalDate getTgdatcho() {
-        return tgdatcho;
-    }
-
-    public void setTgdatcho(LocalDate tgdatcho) {
-        this.tgdatcho = tgdatcho;
-    }
 }

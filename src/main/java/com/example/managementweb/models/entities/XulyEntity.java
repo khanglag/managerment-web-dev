@@ -34,52 +34,23 @@ public class XulyEntity {
     @Column(name = "TrangthaiXL")
     private Integer trangthaiXL;
 
-    public Integer getId() {
-        return id;
+    public Integer getmaTV() {
+        return maTV != null ? maTV.getId() : null; 
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    
+    
 
-    public ThanhvienEntity getMaTV() {
-        return maTV;
-    }
-
-    public void setMaTV(ThanhvienEntity maTV) {
-        this.maTV = maTV;
-    }
-
-    public String getHinhthucXL() {
-        return hinhthucXL;
-    }
-
-    public void setHinhthucXL(String hinhthucXL) {
-        this.hinhthucXL = hinhthucXL;
-    }
-
-    public Integer getSotien() {
-        return sotien;
-    }
-
-    public void setSotien(Integer sotien) {
-        this.sotien = sotien;
-    }
-
-    public LocalDate getNgayxl() {
-        return ngayxl;
-    }
-
-    public void setNgayxl(LocalDate ngayxl) {
-        this.ngayxl = ngayxl;
-    }
-
-    public Integer getTrangthaiXL() {
-        return trangthaiXL;
-    }
-
-    public void setTrangthaiXL(Integer trangthaiXL) {
-        this.trangthaiXL = trangthaiXL;
+    @Override
+    public String toString() {
+        return "{" +
+                " MaXL='" + getId() + "'" +
+                ", MaTV='" + getmaTV() + "'" +
+                ", HinhThucXL='" + getHinhthucXL() + "'" +
+                ", SoTien='" + getSotien() + "'" +
+                ", NgayXL='" + getNgayxl() + "'" +
+                ", TrangThaiXL='" + getTrangthaiXL() + "'" +
+                "}";
     }
 
 }

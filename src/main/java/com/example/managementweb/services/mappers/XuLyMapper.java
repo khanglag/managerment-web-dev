@@ -18,5 +18,4 @@ public interface XuLyMapper {
 
     XulyEntity toEntity(CreateXuLyDto createXuLyDto);
 
-    // XuLyReponsDto toResponseDto(XulyEntity xulyEntity);
 }

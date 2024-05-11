@@ -8,4 +8,5 @@ import org.mapstruct.Mapper;
 public interface ThanhvienMapper {
     ThanhvienEntity toEntity(CreateThanhvienDto createThanhvienDto);
     ThanhvienReponsDto toReponsDto(ThanhvienEntity thahvienEntity);
+    
 }
