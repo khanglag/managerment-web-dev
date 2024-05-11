@@ -17,4 +17,7 @@ public interface ThanhvienEntityRepository extends JpaRepository<ThanhvienEntity
             "WHERE d.email = :email")
     Optional<ThanhvienEntity> findByEmail(String email);
 
+    @Query("SELECT t FROM ThanhvienEntity t LEFT JOIN FETCH t.xulies WHERE t.id = :id")
+    Optional<ThanhvienEntity> findByid(String id);
+
 }

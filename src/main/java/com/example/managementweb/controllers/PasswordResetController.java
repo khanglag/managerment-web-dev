@@ -22,13 +22,13 @@ public class PasswordResetController {
     @PostMapping("/reset-password")
     @ResponseBody
     public String resetPassword(@RequestParam String email) {
-        System.out.println("================================");
-        System.out.println(email);
         if (!thanhvienService.checkEmailExists(email))
-            return "redirect:/fogotpassword?emailexist";
+            return "Ghi sau";
         String password = generateNewPassword();
-        thanhvienService.changePassword(email, password);
-        emailService.sendSimpleMessage(email, "Đặt lại mật khẩu", "Mật khẩu mới của bạn là: " + password);
+        thanhvienService.changePasswordByEmail(email, password);
+
+        String newPassword = generateNewPassword();
+        emailService.sendSimpleMessage(email, "Đặt lại mật khẩu", "Mật khẩu mới của bạn là: " + newPassword);
 
         return "Một email chứa mật khẩu mới đã được gửi đến địa chỉ email của bạn.";
     }
