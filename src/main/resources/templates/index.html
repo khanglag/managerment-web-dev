@@ -8,7 +8,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/assets/css/index.css}" />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -16,15 +17,89 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- GG font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Freeman&family=Noto+Sans+JP:wght@100..900&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <span>Hello</span>
-    <h1>Helloooooo</h1>
-    <a href="signin">
+    <header th:fragment="header">
+      <div id="parent"  >
+        <div id="child" class="dropdown">
+          <div
+            id="group_name_avt"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-expanded="false"
+            role="button"
+          >
+            <img th:src="@{assets/images/avata.png}" id="avata" />
+            <span id="name" th:text="${session.TenTV}"></span>
+          </div>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="changePassword"> Đổi mật khẩu </a>
+
+            <a class="dropdown-item" href="signin">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4" th:fragment="nav">
+          <div class="profile">
+            <img th:src="@{assets/images/avata.png}" class="avt" alt="" />
+            <h3 th:text="${session.TenTV}" class="text-name"></h3>
+            <h4 class="member">Thành viên</h4>
+          </div>
+          <div class="menu">
+            <h3
+            class="text-left text-uppercase border-l font-bold text-2xl px-3"
+          >
+          Quản lý tài khoản
+          </h3>
+            <ul class="custom-list">
+              <li>
+                <i class="fa-solid fa-user"></i>
+                <a href="profile" class="active">Thông tin cá nhân</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <a href="#">Trạng thái vi phạm</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-place-of-worship"></i>
+                <a href="#">Đặt chỗ thiết bị</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <a href="#">Thiết bị đang mượn</a>
+              </li>
+            </ul>
+        </div>
+        <div class="col-8"></div>
+      </div>
+    </div>
+
+    <!-- <a href="signin">
       <button class="btn btn-success">click to signin</button>
     </a>
 
     <button class="btn btn-success" onclick="testjs()">Click me</button>
+    <a href="profile">
+      <button class="btn btn-success">click to profile</button>
+    </a> -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script th:src="@{/assets/js/signin.js}"></script>
