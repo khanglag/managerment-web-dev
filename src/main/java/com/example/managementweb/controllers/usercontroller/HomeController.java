@@ -1,5 +1,7 @@
 package com.example.managementweb.controllers.usercontroller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
 import com.example.managementweb.models.entities.ThanhvienEntity;
 import com.example.managementweb.services.ThanhvienService;
 
@@ -22,6 +26,11 @@ public class HomeController {
     @Autowired
     private ThanhvienService thanhvienService;
 
+    @RequestMapping("/")
+    public String home() {
+        return "redirect:/signin";
+    }
+
     @RequestMapping("/signin")
     public String signin() {
         return "View/signin";
@@ -32,22 +41,71 @@ public class HomeController {
         return "View/register";
     }
 
+    @RequestMapping("/profile")
+    public String showProfile(ModelMap models, HttpSession session) {
+        String mssv = (String) session.getAttribute("mssv");
+        if (mssv == null) {
+            return "redirect:/signin";
+        }
+        Optional<ThanhvienReponsDto> thanhVien = thanhvienService.findByID(mssv);
+        if (thanhVien.isPresent()) {
+            ThanhvienReponsDto thanhVienDto = thanhVien.get();
+            session.setAttribute("MaTV", thanhVienDto.getId());
+            session.setAttribute("TenTV", thanhVienDto.getHoten());
+            session.setAttribute("Khoa", thanhVienDto.getKhoa());
+            session.setAttribute("Nganh", thanhVienDto.getNganh());
+            session.setAttribute("SDT", thanhVienDto.getSdt());
+            session.setAttribute("Email", thanhVienDto.getEmail());
+        }
+        return "View/profile";
+    }
+
+    @RequestMapping("/changePassword")
+    public String changPassword() {
+        return "View/changePassword";
+    }
+
     @RequestMapping("/forgotpassword")
     public String forgotpassword() {
         return "View/forgotpassword";
     }
 
-    @PostMapping("/checkLogin")
+    @PostMapping("/index")
     public String checkLogin(ModelMap models, @RequestParam("mssv") String mssv,
             @RequestParam("password") String password, HttpSession session) {
         System.out.println("================================================================");
         System.out.println("MSSV: " + mssv);
         System.out.println("Password: " + password);
         if (thanhvienService.checkLogin(mssv, password)) {
-            session.setAttribute("MaTV", mssv);
-            return "View/user";
+            session.setAttribute("mssv", mssv);
+            session.setAttribute("password", password);
+            models.addAttribute("mssv", password);
+            models.addAttribute("password", password);
+            Optional<ThanhvienReponsDto> thanhVien = thanhvienService.findByID(mssv);
+            if (thanhVien.isPresent()) {
+                ThanhvienReponsDto thanhVienDto = thanhVien.get();
+                session.setAttribute("TenTV", thanhVienDto.getHoten());
+            }
+            return "index";
         }
         return "redirect:/signin?passwordwrong";
+    }
+
+    @PostMapping("/changePassword")
+
+    public String changePassword(@RequestParam String oldPass, @RequestParam String newPass,
+            @RequestParam String reNewPass, HttpSession session, RedirectAttributes redirectAttributes) {
+        String mssv = (String) session.getAttribute("mssv");
+        String password = (String) session.getAttribute("password");
+        if (!oldPass.equals(password)) {
+            return "redirect:/changePassword?oldPassWrong";
+        }
+        if (!newPass.equals(reNewPass)) {
+            return "redirect:/changePassword?newPassIsDifferent";
+        }
+        thanhvienService.changePassword(mssv, newPass);
+
+        return "redirect:/signin";
     }
 
     @GetMapping("/logout")
