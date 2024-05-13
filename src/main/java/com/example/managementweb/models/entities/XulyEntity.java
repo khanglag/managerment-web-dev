@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -29,7 +29,7 @@ public class XulyEntity {
     private Integer sotien;
 
     @Column(name = "ngayxl")
-    private LocalDate ngayxl;
+    private LocalDateTime ngayxl;
 
     @Column(name = "TrangthaiXL")
     private Integer trangthaiXL;

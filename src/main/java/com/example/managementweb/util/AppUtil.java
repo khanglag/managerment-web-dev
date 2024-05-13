@@ -65,8 +65,8 @@ public class AppUtil {
         private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         @Override
-        public JsonElement serialize(LocalDateTime localDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
-            return new JsonPrimitive(formatter.format(localDateTime));
+        public JsonElement serialize(LocalDateTime LocalDateTime, Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(formatter.format(LocalDateTime));
         }
 
         @Override
