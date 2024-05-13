@@ -27,7 +27,8 @@ public class ThongtinsdService implements IThongtinsdService {
 
     @Override
     public boolean kiemTraMuonHopLe(String maTB) {
-        List<com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
+        List<com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository
+                .listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
         com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
         System.out.println(dto.toString());

@@ -1,7 +1,6 @@
 package com.example.managementweb.services.interfaces;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 
 import java.util.List;
 
