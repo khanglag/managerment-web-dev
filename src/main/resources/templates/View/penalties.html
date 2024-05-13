@@ -35,6 +35,49 @@
     />
   </head>
   <body>
+    <header th:replace="index :: header"></header>
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-4" th:replace="index :: nav"></div>
+        <div class="col-8">
+          <div class="container p-0 mt-5"></div>
+          <div class="panel mx-auto c-mb-3">
+            <div class="col-sm-12 dv-title">
+              <h3
+                class="text-left text-uppercase border-l font-bold text-2xl px-3"
+              >
+                Trạng thái vi phạm
+              </h3>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Mã xử lý</th>
+                    <th>Mã thành viên</th>
+                    <th>Hình thức</th>
+                    <th>Số tiền</th>
+                    <th>Ngày xử lý</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody>           
+                  <tr th:each="penalties : ${penalties}">
+                    <td th:text="${penalties.id}">Mã SV</td>
+                    <td th:text="${penalties.maTV}">Họ tên</td>
+                    <td th:text="${penalties.hinhthucXL}">Ngày sinh</td>
+                    <td th:text="${penalties.sotien}">Địa chỉ</td>
+                    <td th:text="${penalties.ngayxl}">Địa chỉ</td>
+                    <td th:text="${penalties.trangthaiXL}">Địa chỉ</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+         
+        </div>
+      </div>
+    </div>
+    <footer th:replace="index :: footer"></footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

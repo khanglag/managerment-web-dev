@@ -35,7 +35,7 @@
   </head>
   <body>
     <header th:fragment="header">
-      <div id="parent"  >
+      <div id="parent">
         <div id="child" class="dropdown">
           <div
             id="group_name_avt"
@@ -55,7 +55,7 @@
         </div>
       </div>
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
       <div class="row">
         <div class="col-4" th:fragment="nav">
           <div class="profile">
@@ -65,10 +65,10 @@
           </div>
           <div class="menu">
             <h3
-            class="text-left text-uppercase border-l font-bold text-2xl px-3"
-          >
-          Quản lý tài khoản
-          </h3>
+              class="text-left text-uppercase border-l font-bold text-2xl px-3"
+            >
+              Quản lý tài khoản
+            </h3>
             <ul class="custom-list">
               <li>
                 <i class="fa-solid fa-user"></i>
@@ -76,7 +76,7 @@
               </li>
               <li>
                 <i class="fa-solid fa-circle-exclamation"></i>
-                <a href="#">Trạng thái vi phạm</a>
+                <a href="penalties">Trạng thái vi phạm</a>
               </li>
               <li>
                 <i class="fa-solid fa-place-of-worship"></i>
@@ -87,21 +87,108 @@
                 <a href="#">Thiết bị đang mượn</a>
               </li>
             </ul>
+          </div>
+          <div class="col-8"></div>
         </div>
-        <div class="col-8"></div>
       </div>
     </div>
 
-    <!-- <a href="signin">
-      <button class="btn btn-success">click to signin</button>
-    </a>
+    <footer th:fragment="footer" class="mt-5">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 about-footer">
+              <h3>Liên hệ</h3>
+              <ul>
+                <li>
+                  <i class="fa-brands fa-facebook"></i>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100025170306514"
+                    >My facebook</a
+                  >
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone-volume"></i>
+                  <span>(+84) 336065760</span>
+                </li>
 
-    <button class="btn btn-success" onclick="testjs()">Click me</button>
-    <a href="profile">
-      <button class="btn btn-success">click to profile</button>
-    </a> -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <span>3121410215@sv.sgu.edu.vn</span>
+                </li>
+              </ul>
+              <a href="" class="btn red-btn">Book Now</a>
+            </div>
+            <div class="col-md-6 col-lg-2 page-more-info">
+              <div class="footer-title">
+                <h4>Thành viên</h4>
+              </div>
+              <ul>
+                <li>Lê Duy Khang</li>
+                <li>Võ Đinh Xuân Hoàng</li>
+                <li>Nguyễn Kế Cường</li>
+                <li>Đỗ Minh Khang</li>
+                <li>Lê Huy Tín</li>
+                <li>Nguyễn Thị Anh Thư</li>
+              </ul>
+            </div>
+
+            <div class="col-md-6 col-lg-3 page-more-info">
+              <div class="footer-title">
+                <h4>Dịch vụ</h4>
+              </div>
+              <ul>
+                <li>Hỗ trợ thiết bị</li>
+                <li>Hỗ trợ học tập</li>
+                <li>Cho mượn thiết bị</li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4 open-hours">
+              <div class="footer-title">
+                <h4>Thời gian hoạt động</h4>
+              </div>
+              <table class="table" style="color: #fff">
+                <tbody>
+                  <tr>
+                    <td><i class="fa fa-clock-o"></i>Monday Thursday</td>
+                    <td>9:00am - 5:00pm</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-clock-o"></i>Wednesday</td>
+                    <td>9:00am - 6:00pm</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-clock-o"></i>Friday</td>
+                    <td>9:00am - 4:00pm</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-clock-o"></i>Sturday</td>
+                    <td>9:00am - 5:30pm</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-clock-o"></i>Sunday</td>
+                    <td>9:30am - 12:30pm</td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="footer-bottom">
+          <div class="row">
+            <div class="col-sm-4">
+              <a href="">Design by group 4</a>
+            </div>
+            <div class="col-sm-8">
+              <p>Welcome to my web</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script th:src="@{/assets/js/signin.js}"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IThietBiService {
-
     List<ThietbiReponsDto> findAll();
 
     List<ThietbiReponsDto> findByTenTB(String tenTB);
