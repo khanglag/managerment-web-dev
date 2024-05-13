@@ -1,6 +1,5 @@
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import org.springframework.stereotype.Service;
 
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
@@ -25,12 +24,13 @@ public class XuLyService implements IXuLyService {
     XulyEntityRepository repository;
     XuLyMapper mapper;
     ThanhvienEntityRepository tvrepository;
+
     @Override
     public List<XuLyReponsDtos> findByPerson(String id) {
         Optional<ThanhvienEntity> thanhvienEntity = tvrepository.findByid(id);
-        return thanhvienEntity.map( maTV -> {
+        return thanhvienEntity.map(maTV -> {
             List<XulyEntity> xulyEntity = thanhvienEntity.get().getXulies().stream().toList();
-            return xulyEntity.stream().map( mapper ::toDto).collect(Collectors.toList());
+            return xulyEntity.stream().map(mapper::toDto).collect(Collectors.toList());
         }).orElse(new ArrayList<>());
     }
 }

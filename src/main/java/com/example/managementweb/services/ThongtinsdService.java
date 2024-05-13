@@ -1,3 +1,4 @@
+
 package com.example.managementweb.services;
 
 import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
@@ -23,16 +24,19 @@ public class ThongtinsdService implements IThongtinsdService {
     public List<ThongtinsudungdangmuonDto> listDangMuon(String id) {
         return thongtinsdEntityRepository.findThongtinsudungdangmuonDtoByMaTVId(id);
     }
+
     @Override
-    public boolean kiemTraMuonHopLe(String maTB){
+    public boolean kiemTraMuonHopLe(String maTB) {
         List<ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
-        ThongtinsdReponsDto dto=listdtos.get(listdtos.size()-1);
+        ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
         System.out.println(dto.toString());
         if ((dto.getTgtra() != null && dto.getTgtra().isBefore(LocalDateTime.now().minusDays(1))) &&
-                (dto.getTgdatcho() == null )) return true;
+                (dto.getTgdatcho() == null))
+            return true;
         if ((dto.getTgtra() != null && dto.getTgtra().isBefore(LocalDateTime.now().minusDays(1))) &&
-                (dto.getTgdatcho().isBefore(LocalDateTime.now().minusDays(1)))) return true;
+                (dto.getTgdatcho().isBefore(LocalDateTime.now().minusDays(1))))
+            return true;
         return false;
     }
 }

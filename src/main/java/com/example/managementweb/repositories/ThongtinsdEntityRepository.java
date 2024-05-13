@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 public interface ThongtinsdEntityRepository extends JpaRepository<ThongtinsdEntity, Integer> {
     @Query("SELECT NEW com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto(" +
             "tt.id, tt.maTV.id, tt.maTB.id, tb.tenTB, tt.tgvao, tt.tgmuon, tt.tgtra, tt.tgdatcho) " +
