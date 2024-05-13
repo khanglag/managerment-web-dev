@@ -40,6 +40,4 @@ public class ThietBiService implements IThietBiService {
                 .map(mapper::toReponsDto)
                 .collect(Collectors.toList());
     }
-
-    
 }

@@ -7,9 +7,6 @@ import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
 import java.util.List;
 
 public interface IThietBiService {
-
     List<ThietbiReponsDto> findAll();
     List<ThietbiReponsDto> findByTenTB(String tenTB);
-
-   
 }
