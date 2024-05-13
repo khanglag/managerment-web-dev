@@ -1,9 +1,13 @@
 package com.example.managementweb.controllers.usercontroller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -163,27 +167,15 @@ public class HomeController {
         return "View/thietbiDetail"; // Trả về view chi tiết của thiết bị
     }
 
-    // @GetMapping("/reservation/{id}")
-    // public String getThietBiDetail(@PathVariable("id") String id, Model model) {
-    // Optional<ThietbiReponsDto> thietbi = thietBiService.findByID(id);
-    // model.addAttribute("thietbi", thietbi.get());
-    // return "View/thietbiDetail"; // Trả về view chi tiết của thiết bị
-    // }
-    // @GetMapping("/reservation/{id}")
-    // @ResponseBody
-    // public ThietbiReponsDto getThietBiDetail(@PathVariable("id") String id) {
-    // Optional<ThietbiReponsDto> thietbi = thietBiService.findByID(id);
-    // ThietbiReponsDto thietbiDetail = thietbi.get();
-    // return thietbiDetail;
-    // }
-
-    // @GetMapping("reservation/{id}")
-    // public String getThietBiDetail(@PathVariable String id, Model model) {
-
-    // Optional<ThietbiReponsDto> thietbi = thietBiService.findByID(id);
-    // model.addAttribute("thietbi", thietbi.get());
-
-    // return "View/thietbi_detail_modal"; // Tên của file Thymeleaf template
-    // }
+    @PostMapping("/reservationDevice")
+    public String reservationDevice(HttpSession session, @RequestParam("thietbiId") String id,
+            @RequestParam("ngayGioDat") String date) {
+        System.out.println("================================================");
+        System.out.println(id);
+        System.out.println(date);
+        String mssv = (String) session.getAttribute("mssv");
+        System.out.println(mssv);
+        return "View/reservation";
+    }
 
 }

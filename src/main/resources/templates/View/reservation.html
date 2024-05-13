@@ -33,11 +33,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <style>
-        .modal-content {
-            width: 80%; /* Điều chỉnh kích thước của cửa sổ popup */
-        }
-    </style>
 </head>
 <body>
     <header th:replace="index :: header"></header>
@@ -48,53 +43,40 @@
           <div class="container p-0 mt-5"></div>
           <div class="panel mx-auto c-mb-3">
             <div class="col-sm-12 dv-title">
+              
               <h3
                 class="text-left text-uppercase border-l font-bold text-2xl px-3"
               >
                 Đặt chỗ thiết bị
               </h3>
-              <table class="table table-bordered">
-                <thead>
+              <div id="detail"></div>
+              <div id="deviceTableWrapper"> <!-- Wrapper div for the table to hide/show -->
+                <table id="deviceTable" class="table table-bordered">
+                  <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Tên Thiết bị</th>
-                        <th>Mô tả</th>
-                        <th>Đặt chỗ</th>
+                      <th>ID</th>
+                      <th>Tên Thiết bị</th>
+                      <th>Mô tả</th>
+                      <th>Đặt chỗ</th>
                     </tr>
-                </thead>
-                <tbody>
+                  </thead>
+                  <tbody>
                     <tr th:each="thietbi : ${thietbisList}">
-                        <td class="id" th:text="${thietbi.id}"></td>
-                        <td th:text="${thietbi.tenTB}"></td>
-                        <td th:text="${thietbi.motaTB}"></td>
-                        <td><button class="selectRow" data-toggle="modal" data-target="#myModal">Chọn</button></td>
+                      <td class="id" th:text="${thietbi.id}"></td>
+                      <td th:text="${thietbi.tenTB}"></td>
+                      <td th:text="${thietbi.motaTB}"></td>
+                      <td><button class="selectRow">Chọn</button></td>
                     </tr>
-                </tbody>
-            </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Đặt chỗ thiết bị</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body" id="detail">
-            <!-- Nội dung chi tiết thiết bị sẽ được thêm vào đây -->
-            
-          </div>
-        </div>
-      </div>
-    </div>
+    
     
     <footer th:replace="index :: footer"></footer>
     <!-- Optional JavaScript -->
@@ -114,5 +96,26 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $(".selectRow").click(function() {
+          $("#deviceTableWrapper").hide(); // Ẩn bảng khi nhấn nút "Chọn"
+          // Lấy ID từ cột ID trong hàng chứa nút đã nhấn
+          var id = $(this).closest("tr").find(".id").text();
+          // Gửi yêu cầu AJAX để lấy thông tin chi tiết với ID đã lấy được
+          $.ajax({
+            type: "GET",
+            url: "/reservation/" + id, // Đường dẫn phải thay đổi tùy theo cấu trúc của ứng dụng của bạn
+            success: function(data) {
+              // Hiển thị thông tin chi tiết trong phần tử có ID là "detail"
+              $("#detail").html(data);
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
