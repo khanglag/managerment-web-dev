@@ -1,7 +1,7 @@
 
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
 import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.repositories.ThongtinsdEntityRepository;
 import com.example.managementweb.services.interfaces.IThongtinsdService;
@@ -27,9 +27,9 @@ public class ThongtinsdService implements IThongtinsdService {
 
     @Override
     public boolean kiemTraMuonHopLe(String maTB) {
-        List<ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
+        List<com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
-        ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
+        com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
         System.out.println(dto.toString());
         if ((dto.getTgtra() != null && dto.getTgtra().isBefore(LocalDateTime.now().minusDays(1))) &&
                 (dto.getTgdatcho() == null))
