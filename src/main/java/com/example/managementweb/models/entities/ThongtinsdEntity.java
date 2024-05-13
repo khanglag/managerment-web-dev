@@ -44,7 +44,7 @@ public class ThongtinsdEntity {
     public Integer getMaTB() {
         return maTB != null ? maTB.getId() : null;
     }
-
+    public boolean daDatCho() { return tgdatcho==null; }
     @Override
     public String toString() {
         return "{" +
@@ -57,5 +57,4 @@ public class ThongtinsdEntity {
                 ", tgdatcho='" + getTgdatcho() + "'" +
                 "}";
     }
-
 }
