@@ -1,7 +1,7 @@
 package com.example.managementweb.models.dtos.Xuly;
 
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
 import com.example.managementweb.models.entities.ThanhvienEntity;
@@ -20,7 +20,7 @@ public class XuLyReponsDtos {
     private Integer maTV;
     private String hinhthucXL;
     private Integer sotien;
-    private LocalDate ngayxl;
+    private LocalDateTime ngayxl;
     private Integer trangthaiXL;
 
 } 
