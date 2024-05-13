@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Booking device</title>
+
+        <!-- Import Bootstrap and JQuery -->
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">    
+        </script>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+        <!-- DataTables -->
+        <link rel="stylesheet"
+            type="text/css"
+            href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <script type="text/javascript"
+            charset="utf8"
+            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">    
+        </script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="../../static/assets/font/fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet"
+            href="../../static/assets/css/booking.css">
+    </head>
+    <body>
+        <h1 class="display-5 my-5 text-info">Danh sách thiết bị</h1>
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr id="list-header">
+                    <th scope="col">Mã thiết bị</th>
+                    <th scope="col">Tên thiết bị</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Đặt chỗ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#example').DataTable({
+                
+            });
+            });
+        </script>
+    </body>
+</html>
