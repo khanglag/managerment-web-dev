@@ -1,5 +1,6 @@
 package com.example.managementweb.services;
 
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import org.springframework.stereotype.Service;
 
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class XuLyService implements IXuLyService {
-    
+
     XulyEntityRepository repository;
     XuLyMapper mapper;
     ThanhvienEntityRepository tvrepository;
