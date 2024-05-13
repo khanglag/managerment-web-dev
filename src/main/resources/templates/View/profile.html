@@ -37,7 +37,7 @@
   </head>
   <body>
     <header th:replace="index :: header"></header>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
       <div class="row">
         <div class="col-4" th:replace="index :: nav"></div>
         <div class="col-8">
@@ -54,27 +54,27 @@
             <div class="content_post">
               <table class="table table-hover table-borderless">
                 <tbody>
-                  <tr>
+                  <tr class="table-light">
                     <th scope="row">Mã thành viên:</th>
                     <th><span th:text="${session.MaTV}"></span></th>
                   </tr>
-                  <tr>
+                  <tr class="table-primary">
                     <th scope="row">Họ tên:</th>
                     <th><span th:text="${session.TenTV}"></span></th>
                   </tr>
-                  <tr>
+                  <tr class="table-light">
                     <th scope="row">Khoa:</th>
                     <th><span th:text="${session.Khoa}"></span></th>
                   </tr>
-                  <tr>
+                  <tr class="table-primary">
                     <th scope="row">Ngành:</th>
                     <th><span th:text="${session.Nganh}"></span></th>
                   </tr>
-                  <tr>
+                  <tr class="table-light">
                     <th scope="row">Số điện thoại:</th>
                     <th><span th:text="${session.SDT}"></span></th>
                   </tr>
-                  <tr>
+                  <tr class="table-primary">
                     <th scope="row">Email:</th>
                     <th><span th:text="${session.Email}"></span></th>
                   </tr>
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-
+    <footer th:replace="index :: footer"></footer>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
