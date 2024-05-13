@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -8,7 +8,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- css -->
     <link rel="stylesheet" th:href="@{/assets/css/profile.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/index.css}" />
@@ -34,58 +33,72 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-  </head>
-  <body>
+    <style>
+        .modal-content {
+            width: 80%; /* Điều chỉnh kích thước của cửa sổ popup */
+        }
+    </style>
+</head>
+<body>
     <header th:replace="index :: header"></header>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
       <div class="row">
         <div class="col-4" th:replace="index :: nav"></div>
         <div class="col-8">
-          <div class="container p-0 mt-5">
-            <div class="panel mx-auto c-mb-3">
-              <div class="col-sm-12 dv-title">
-                <h3
-                  class="text-left text-uppercase border-l font-bold text-2xl px-3"
-                >
-                  Thông Tin Cá Nhân
-                </h3>
-              </div>
-            </div>
-            <div class="content_post">
-              <table class="table table-hover table-borderless">
+          <div class="container p-0 mt-5"></div>
+          <div class="panel mx-auto c-mb-3">
+            <div class="col-sm-12 dv-title">
+              <h3
+                class="text-left text-uppercase border-l font-bold text-2xl px-3"
+              >
+                Đặt chỗ thiết bị
+              </h3>
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Thiết bị</th>
+                        <th>Mô tả</th>
+                        <th>Đặt chỗ</th>
+                    </tr>
+                </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">Mã thành viên:</th>
-                    <th><span th:text="${session.MaTV}"></span></th>
-                  </tr>
-                  <tr>
-                    <th scope="row">Họ tên:</th>
-                    <th><span th:text="${session.TenTV}"></span></th>
-                  </tr>
-                  <tr>
-                    <th scope="row">Khoa:</th>
-                    <th><span th:text="${session.Khoa}"></span></th>
-                  </tr>
-                  <tr>
-                    <th scope="row">Ngành:</th>
-                    <th><span th:text="${session.Nganh}"></span></th>
-                  </tr>
-                  <tr>
-                    <th scope="row">Số điện thoại:</th>
-                    <th><span th:text="${session.SDT}"></span></th>
-                  </tr>
-                  <tr>
-                    <th scope="row">Email:</th>
-                    <th><span th:text="${session.Email}"></span></th>
-                  </tr>
+                    <tr th:each="thietbi : ${thietbisList}">
+                        <td class="id" th:text="${thietbi.id}"></td>
+                        <td th:text="${thietbi.tenTB}"></td>
+                        <td th:text="${thietbi.motaTB}"></td>
+                        <td><button class="selectRow" data-toggle="modal" data-target="#myModal">Chọn</button></td>
+                    </tr>
                 </tbody>
-              </table>
+            </table>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Đặt chỗ thiết bị</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body" id="detail">
+            <!-- Nội dung chi tiết thiết bị sẽ được thêm vào đây -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer th:replace="index :: footer"></footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
