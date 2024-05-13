@@ -8,6 +8,7 @@ class ManagementWebApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
