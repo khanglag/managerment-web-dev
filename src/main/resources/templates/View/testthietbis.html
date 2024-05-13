@@ -3,20 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách Thiết bị</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .detail-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".selectRow").click(function () {
+                var id = $(this).closest("tr").find(".id").text();
+                $.ajax({
+                    type: "GET",
+                    url: "/thietbis/" + id,
+                    success: function (data) {
+                        $("#detail").html(data);
+                        $(".detail-container").show();
+                    }
+                });
+            });
+
+            $(".close-button").click(function () {
+                $(".detail-container").hide();
+            });
+        });
+    </script>
 </head>
 <body>
     <h1>Danh sách Thiết bị</h1>
     <table>
-        <tr>
-            <th>ID</th>
-            <th>Tên Thiết bị</th>
-            <th>Mô tả</th>
-        </tr>
-        <tr th:each="thietbi : ${thietbisList}">
-            <td th:text="${thietbi.id}"></td>
-            <td th:text="${thietbi.tenTB}"></td>
-            <td th:text="${thietbi.motaTB}"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Thiết bị</th>
+                <th>Mô tả</th>
+                <th>Chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="thietbi : ${thietbisList}">
+                <td class="id" th:text="${thietbi.id}"></td>
+                <td th:text="${thietbi.tenTB}"></td>
+                <td th:text="${thietbi.motaTB}"></td>
+                <td><button class="selectRow">Chọn</button></td>
+            </tr>
+        </tbody>
     </table>
+
+    <div class="detail-container" id="detail">
+        <!-- Chi tiết thiết bị sẽ được hiển thị ở đây -->
+        <span class="close-button">Đóng</span>
+    </div>
 </body>
 </html>
