@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Thiết bị</title>
+</head>
+<body>
+    <h1>Danh sách Thiết bị</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tên Thiết bị</th>
+            <th>Mô tả</th>
+        </tr>
+        <tr th:each="thietbi : ${thietbisList}">
+            <td th:text="${thietbi.id}"></td>
+            <td th:text="${thietbi.tenTB}"></td>
+            <td th:text="${thietbi.motaTB}"></td>
+        </tr>
+    </table>
+</body>
+</html>

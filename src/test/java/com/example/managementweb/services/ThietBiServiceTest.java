@@ -21,17 +21,17 @@ public class ThietBiServiceTest {
     private AppUtil appUtil;
 
     @Test
-     void findAll() {
+    void findAll() {
         List<ThietbiReponsDto> result = service.findAll();
+        System.out.println("================================================");
         System.out.println(appUtil.toJson(result));
 
     }
-
 
     @Test
     public void testFindByName() {
         List<ThietbiReponsDto> list = service.findByTenTB("Micro");
         System.out.println(appUtil.toJson(list));
     }
-    
+
 }
