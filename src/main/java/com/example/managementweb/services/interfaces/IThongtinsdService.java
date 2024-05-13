@@ -7,4 +7,6 @@ import java.util.List;
 public interface IThongtinsdService {
 
     List<ThongtinsudungdangmuonDto> listDangMuon(String id);
+
+    boolean kiemTraMuonHopLe(String maTB);
 }

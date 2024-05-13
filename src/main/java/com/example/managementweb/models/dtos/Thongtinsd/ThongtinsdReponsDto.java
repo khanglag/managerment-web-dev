@@ -3,35 +3,35 @@ package com.example.managementweb.models.dtos.Thongtinsd;
 import java.time.LocalDateTime;
 
 public class ThongtinsdReponsDto {
-    private Integer id;
-    private Integer maTVId;
-    private Integer maTBId;
+    private int id;
+    private int maTVId;
+    private String maTBId;
     private LocalDateTime tgvao;
     private LocalDateTime tgmuon;
     private LocalDateTime tgtra;
     private LocalDateTime tgdatcho;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getMaTVId() {
+    public int getMaTVId() {
         return maTVId;
     }
 
-    public void setMaTVId(Integer maTVId) {
+    public void setMaTVId(int maTVId) {
         this.maTVId = maTVId;
     }
 
-    public Integer getMaTBId() {
+    public String getMaTBId() {
         return maTBId;
     }
 
-    public void setMaTBId(Integer maTBId) {
+    public void setMaTBId(String maTBId) {
         this.maTBId = maTBId;
     }
 
@@ -65,5 +65,18 @@ public class ThongtinsdReponsDto {
 
     public void setTgdatcho(LocalDateTime tgdatcho) {
         this.tgdatcho = tgdatcho;
+    }
+
+    @Override
+    public String toString() {
+        return "ThongtinsdReponsDto{" +
+                "id=" + id +
+                ", maTVId=" + maTVId +
+                ", maTBId='" + maTBId + '\'' +
+                ", tgvao=" + tgvao +
+                ", tgmuon=" + tgmuon +
+                ", tgtra=" + tgtra +
+                ", tgdatcho=" + tgdatcho +
+                '}';
     }
 }

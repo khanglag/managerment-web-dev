@@ -21,4 +21,8 @@ public class ThongtinsdServiceTest {
             System.out.println(temp.toString());
         }
     }
+    @Test
+    public void testThongtinsdService2() {
+        System.out.println(thongtinsdService.kiemTraMuonHopLe("420236"));
+    }
 }
