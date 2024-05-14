@@ -1,6 +1,5 @@
 package com.example.managementweb.services;
 
-
 import com.example.managementweb.models.dtos.ThietBi.CreataThietBiDto;
 import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
 import com.example.managementweb.models.entities.ThietbiEntity;
@@ -14,6 +13,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,7 +32,7 @@ public class ThietBiService implements IThietBiService {
                 .collect(Collectors.toList());
     }
 
-    //Tìm kiếm theo tên thiết bị
+    // Tìm kiếm theo tên thiết bị
     @Override
     public List<ThietbiReponsDto> findByTenTB(String tenTB) {
         List<ThietbiEntity> entities = repository.findByTenTB(tenTB);
@@ -40,4 +40,11 @@ public class ThietBiService implements IThietBiService {
                 .map(mapper::toReponsDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Optional<ThietbiReponsDto> findByID(String id) {
+        Optional<ThietbiEntity> entity = repository.findByID(id);
+        return entity.map(mapper::toReponsDto);
+    }
+
 }

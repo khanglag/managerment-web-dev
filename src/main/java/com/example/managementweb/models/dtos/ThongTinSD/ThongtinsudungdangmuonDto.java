@@ -1,4 +1,4 @@
-package com.example.managementweb.models.dtos.Thongtinsd;
+package com.example.managementweb.models.dtos.ThongTinSD;
 
 import java.time.LocalDateTime;
 
@@ -17,8 +17,8 @@ public class ThongtinsudungdangmuonDto {
                 '}';
     }
 
-    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId, String maTBName, LocalDateTime tgvao, LocalDateTime tgmuon, LocalDateTime tgtra, LocalDateTime tgdatcho) {
-
+    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId, String maTBName, LocalDate tgvao,
+            LocalDate tgmuon, LocalDate tgtra, LocalDate tgdatcho) {
         this.id = id;
         this.maTVId = maTVId;
         this.maTBId = maTBId;

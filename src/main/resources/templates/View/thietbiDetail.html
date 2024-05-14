@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết Thiết bị</title>
+</head>
+<body>
+    <form action="/reservationDevice" method="post" class="">
+        <div class="form-group">
+            <label for="thietbiId">ID:</label>
+            <input type="text" class="form-control" id="thietbiId" name="thietbiId" th:value="${thietbi.id}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="tenTB">Tên Thiết bị:</label>
+            <input type="text" class="form-control" id="tenTB" name="tenTB" th:value="${thietbi.tenTB}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="motaTB">Mô tả:</label>
+            <input type="text" class="form-control" id="motaTB" name="motaTB" th:value="${thietbi.motaTB}" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="ngayGioDat">Chọn ngày và giờ:</label>
+            <input type="datetime-local" class="form-control" id="ngayGioDat" name="ngayGioDat">
+        </div>
+        
+        <!-- Nút đặt chỗ -->
+        <button type="submit" class="btn btn-primary">Đặt chỗ</button>
+    </form>
+</body>
+</html>
