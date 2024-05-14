@@ -23,6 +23,7 @@ public class ThongtinsdServiceTest {
     }
     @Test
     public void testThongtinsdService2() {
-        System.out.println(thongtinsdService.kiemTraMuonHopLe("420236"));
+        System.out.println(thongtinsdService.kiemtraThanhVienHopLe(1220102008));
+
     }
 }
