@@ -1,9 +1,10 @@
 
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
+import com.example.managementweb.models.entities.ThongtinsdEntity;
 import com.example.managementweb.models.entities.XulyEntity;
 import com.example.managementweb.repositories.ThanhvienEntityRepository;
 import com.example.managementweb.repositories.ThongtinsdEntityRepository;
@@ -12,6 +13,9 @@ import com.example.managementweb.services.interfaces.IThongtinsdService;
 import com.example.managementweb.services.mappers.ThanhvienMapper;
 import com.example.managementweb.services.mappers.ThongtinsdMapper;
 import com.example.managementweb.services.mappers.XuLyMapper;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +51,7 @@ public class ThongtinsdService implements IThongtinsdService {
             return true;
         return false;
     }
+
     @Autowired
     XulyEntityRepository xulyEntityRepository;
     @Autowired
@@ -65,9 +70,11 @@ public class ThongtinsdService implements IThongtinsdService {
         }
         return -1; // Trả về -1 nếu không tìm thấy ký tự số trong chuỗi
     }
+
     public static int tinhSoNgay(int soThang) {
         return soThang * 30;
     }
+
     public static boolean kiemTraNgay(LocalDateTime ngayDaChoTruoc, long soNgay) {
         // Lấy ngày hiện tại
         LocalDateTime ngayHienTai = LocalDateTime.now();
@@ -78,39 +85,49 @@ public class ThongtinsdService implements IThongtinsdService {
         // So sánh với ngày hiện tại
         return ngayMoi.isBefore(ngayHienTai);
     }
+
     @Override
-    public boolean kiemtraThanhVienHopLe(int maTV){
-        List<XulyEntity> list =xulyEntityRepository.findByPersonAll(maTV+"");
-        List<XuLyReponsDtos> listdto= list.stream().map(xuLyMapper::toDto).collect(Collectors.toList());
-        if(listdto.size()==0) return true;
+    public boolean kiemtraThanhVienHopLe(int maTV) {
+        List<XulyEntity> list = xulyEntityRepository.findByPersonAll(maTV + "");
+        List<XuLyReponsDtos> listdto = list.stream().map(xuLyMapper::toDto).collect(Collectors.toList());
+        if (listdto.size() == 0)
+            return true;
         XuLyReponsDtos dto = listdto.get(listdto.size() - 1);
         System.out.println(dto.toString());
-        if (dto.getHinhthucXL().equals("Khóa thẻ vĩnh viễn")) return false;
-        if(findNumberInString(dto.getHinhthucXL())== -1 && dto.getTrangthaiXL()==1) return true;
-        if(dto.getTrangthaiXL()==0) return false;
-        if(findNumberInString(dto.getHinhthucXL())!=-1)
-            if(kiemTraNgay(dto.getNgayxl(),tinhSoNgay(findNumberInString(dto.getHinhthucXL())))) return true;
+        if (dto.getHinhthucXL().equals("Khóa thẻ vĩnh viễn"))
+            return false;
+        if (findNumberInString(dto.getHinhthucXL()) == -1 && dto.getTrangthaiXL() == 1)
+            return true;
+        if (dto.getTrangthaiXL() == 0)
+            return false;
+        if (findNumberInString(dto.getHinhthucXL()) != -1)
+            if (kiemTraNgay(dto.getNgayxl(), tinhSoNgay(findNumberInString(dto.getHinhthucXL()))))
+                return true;
         return false;
     }
+
     @Override
-    public String kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time){
-        if(kiemtraThanhVienHopLe(maTV)&&kiemTraTBMuonHopLe(maTB,time))return "Mượn thành công";
+    public String kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time) {
+        if (kiemtraThanhVienHopLe(maTV) && kiemTraTBMuonHopLe(maTB, time))
+            return "Mượn thành công";
         return "Mượn thất bại";
     }
+
+    @Transactional
+    public ThongtinsdEntity createThongtinsd(ThongtinsdEntity thongtinsdEntity) {
+        return thongtinsdEntityRepository.save(thongtinsdEntity);
+    }
+
+    public String reservationDevice(ThongtinsdEntity thongtinsd) {
+        if (kiemtraThanhVienHopLe(thongtinsd.getMaTV())) {
+            if (kiemTraTBMuonHopLe(thongtinsd.getMaTB().toString(), thongtinsd.getTgdatcho())) {
+                createThongtinsd(thongtinsd);
+                return "Đặt chỗ thành công";
+            }
+            return "Thiết bị bận";
+        }
+
+        return "Thành viên không thể mượn thiết bị";
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

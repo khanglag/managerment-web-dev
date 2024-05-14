@@ -1,6 +1,6 @@
 package com.example.managementweb.services.mappers;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
