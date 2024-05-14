@@ -1,5 +1,4 @@
-package com.example.managementweb.models.dtos.ThongTinSD;
-
+package com.example.managementweb.models.dtos.Thongtinsd;
 import java.time.LocalDateTime;
 
 public class ThongtinsudungdangmuonDto {
