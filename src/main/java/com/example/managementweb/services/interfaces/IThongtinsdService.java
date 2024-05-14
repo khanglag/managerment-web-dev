@@ -1,5 +1,6 @@
 package com.example.managementweb.services.interfaces;
 
+
 import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 
 import java.time.LocalDateTime;
@@ -14,4 +15,5 @@ public interface IThongtinsdService {
     boolean kiemtraThanhVienHopLe(int maTV);
 
     String kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time);
+
 }

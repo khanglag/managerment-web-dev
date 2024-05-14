@@ -23,10 +23,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Service
 public class ThongtinsdService implements IThongtinsdService {
     @Autowired
     private ThongtinsdEntityRepository thongtinsdEntityRepository;
+
     @Autowired
     private ThongtinsdMapper thongtinsdMapper;
     @Autowired
@@ -36,6 +38,7 @@ public class ThongtinsdService implements IThongtinsdService {
     public List<ThongtinsudungdangmuonDto> listDangMuon(String id) {
         return thongtinsdEntityRepository.findThongtinsudungdangmuonDtoByMaTVId(id);
     }
+
 
     @Override
     public boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time) {
@@ -129,5 +132,6 @@ public class ThongtinsdService implements IThongtinsdService {
 
         return "Thành viên không thể mượn thiết bị";
     }
+
 
 }
