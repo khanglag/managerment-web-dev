@@ -98,6 +98,8 @@ public class ThanhvienEntity {
         this.email = email;
     }
 
+    
+
     public Set<ThongtinsdEntity> getThongtinsds() {
         return thongtinsds;
     }

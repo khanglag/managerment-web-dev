@@ -51,7 +51,7 @@ public class ThietbiEntity {
     public void setMotaTB(String motaTB) {
         this.motaTB = motaTB;
     }
-
+    
     public Set<ThongtinsdEntity> getThongtinsds() {
         return thongtinsds;
     }

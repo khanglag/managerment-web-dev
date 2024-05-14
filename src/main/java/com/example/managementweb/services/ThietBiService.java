@@ -39,7 +39,5 @@ public class ThietBiService implements IThietBiService {
         return entities.stream()
                 .map(mapper::toReponsDto)
                 .collect(Collectors.toList());
-    }
-
-    
+    } 
 }
