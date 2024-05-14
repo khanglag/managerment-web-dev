@@ -1,8 +1,8 @@
 
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
 import com.example.managementweb.models.entities.XulyEntity;
