@@ -23,11 +23,10 @@ public class PasswordResetController {
     @ResponseBody
     public String resetPassword(@RequestParam String email) {
         if (!thanhvienService.checkEmailExists(email))
-            return "Ghi sau";
-        String password = generateNewPassword();
-        thanhvienService.changePasswordByEmail(email, password);
-
+            return "Email không tồn tại trong hệ thống.";
         String newPassword = generateNewPassword();
+        thanhvienService.changePasswordByEmail(email, newPassword);
+
         emailService.sendSimpleMessage(email, "Đặt lại mật khẩu", "Mật khẩu mới của bạn là: " + newPassword);
 
         return "Một email chứa mật khẩu mới đã được gửi đến địa chỉ email của bạn.";
