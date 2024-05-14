@@ -28,8 +28,30 @@
         <!-- Custom CSS -->
         <link rel="stylesheet"
             href="../../static/assets/css/booking.css">
+        <link rel="stylesheet"
+            href="../../static/assets/css/bookingtemplate.css">
     </head>
     <body>
+        <div class="booking-panel">
+            <h2>Đặt chỗ</h2>
+            <div class="booking-details">
+                <p><strong>Mã thiết bị: </strong> <input type="text"
+                        id="deviceCodeInput" placeholder="Mã thiết bị"></p>
+                <p><strong>Tên thiết bị: </strong> <input type="text"
+                        id="deviceNameInput" placeholder="Tên thiết bị"></p>
+                <p><strong>Mô tả thiết bị: </strong> <input type="text"
+                        id="descriptionInput" placeholder="Mô tả thiết bị"></p>
+                <p><strong>Tên người dùng: </strong> <input type="text"
+                        id="userNameInput" placeholder="Tên người dùng"></p>
+                <p><strong>Thời gian đặt chỗ: </strong> <input
+                        type="datetime-local" id="bookingTimeInput"
+                        placeholder="Thời gian đặt chỗ"></p>
+            </div>
+            <div class="booking-actions">
+                <button class="btn btn-primary" id="confirmBooking">Xác nhận</button>
+                <button class="btn btn-danger" id="cancelBooking">Hủy</button>
+            </div>
+        </div>
         <h1 class="display-5 my-5 text-info">Danh sách thiết bị</h1>
         <table class="table table-striped" id="example">
             <thead>
@@ -37,19 +59,21 @@
                     <th scope="col">Mã thiết bị</th>
                     <th scope="col">Tên thiết bị</th>
                     <th scope="col">Mô tả</th>
-                    <th scope="col">Đặt chỗ</th>
+                    <!-- <th scope="col">Đặt chỗ</th> -->
                 </tr>
             </thead>
-
             <tbody>
             </tbody>
+            <button id="showBookingPanel">Đặt chỗ</button>
+            <div id="overlay"></div>
         </table>
         <script type="text/javascript">
             $(document).ready(function() {
-            $('#example').DataTable({
-                
-            });
+                $('#example').DataTable({
+                    
+                });
             });
         </script>
+        <script src="../../static/assets/js/booking.js"></script>
     </body>
 </html>
