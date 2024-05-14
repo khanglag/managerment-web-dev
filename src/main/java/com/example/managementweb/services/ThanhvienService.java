@@ -2,7 +2,9 @@ package com.example.managementweb.services;
 
 import com.example.managementweb.models.dtos.Thanhvien.CreateThanhvienDto;
 import com.example.managementweb.models.dtos.Thanhvien.ThanhvienReponsDto;
+import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.models.entities.ThanhvienEntity;
+import com.example.managementweb.models.entities.XulyEntity;
 import com.example.managementweb.repositories.ThanhvienEntityRepository;
 import com.example.managementweb.services.interfaces.IThanhvienService;
 import com.example.managementweb.services.mappers.ThanhvienMapper;
@@ -10,9 +12,11 @@ import com.example.managementweb.util.ObjectsValidator;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -111,4 +115,5 @@ public class ThanhvienService implements IThanhvienService {
         }
         return false;
     }
+
 }

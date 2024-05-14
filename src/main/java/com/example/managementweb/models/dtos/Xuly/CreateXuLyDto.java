@@ -1,7 +1,7 @@
 package com.example.managementweb.models.dtos.Xuly;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.aspectj.lang.annotation.AdviceName;
 
@@ -22,7 +22,7 @@ public class CreateXuLyDto implements Serializable {
     private ThanhvienReponsDto maTV;
     private  String hinhthucXL;
     private Integer sotien;
-    private LocalDate ngayxl;
+    private LocalDateTime ngayxl;
     private Integer trangthaiXL;
     
 }

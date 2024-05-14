@@ -1,6 +1,5 @@
 package com.example.managementweb.models.dtos.ThongTinSD;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ThongtinsudungdangmuonDto {
@@ -66,40 +65,44 @@ public class ThongtinsudungdangmuonDto {
         return maTBName;
     }
 
-    public LocalDate getTgvao() {
+    public void setMaTBName(String maTBName) {
+        this.maTBName = maTBName;
+    }
+
+    public LocalDateTime getTgvao() {
         return tgvao;
     }
 
-    public void setTgvao(LocalDate tgvao) {
+    public void setTgvao(LocalDateTime tgvao) {
         this.tgvao = tgvao;
     }
 
-    public LocalDate getTgmuon() {
+    public LocalDateTime getTgmuon() {
         return tgmuon;
     }
 
-    public void setTgmuon(LocalDate tgmuon) {
+    public void setTgmuon(LocalDateTime tgmuon) {
         this.tgmuon = tgmuon;
     }
 
-    public LocalDate getTgtra() {
+    public LocalDateTime getTgtra() {
         return tgtra;
     }
 
-    public void setTgtra(LocalDate tgtra) {
+    public void setTgtra(LocalDateTime tgtra) {
         this.tgtra = tgtra;
     }
 
-    public LocalDate getTgdatcho() {
+    public LocalDateTime getTgdatcho() {
         return tgdatcho;
     }
 
-    public void setTgdatcho(LocalDate tgdatcho) {
+    public void setTgdatcho(LocalDateTime tgdatcho) {
         this.tgdatcho = tgdatcho;
     }
 
-    private LocalDate tgmuon;
-    private LocalDate tgtra;
-    private LocalDate tgdatcho;
+    private LocalDateTime tgmuon;
+    private LocalDateTime tgtra;
+    private LocalDateTime tgdatcho;
 
 }

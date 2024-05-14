@@ -3,7 +3,7 @@ package com.example.managementweb.models.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -27,16 +27,16 @@ public class ThongtinsdEntity {
     private ThietbiEntity maTB;
 
     @Column(name = "tgvao")
-    private LocalDate tgvao;
+    private LocalDateTime tgvao;
 
     @Column(name = "tgmuon")
-    private LocalDate tgmuon;
+    private LocalDateTime tgmuon;
 
     @Column(name = "tgtra")
-    private LocalDate tgtra;
+    private LocalDateTime tgtra;
 
     @Column(name = "tgdatcho")
-    private LocalDate tgdatcho;
+    private LocalDateTime tgdatcho;
 
     public Integer getMaTV() {
         return maTV != null ? maTV.getId() : null;
@@ -45,7 +45,7 @@ public class ThongtinsdEntity {
     public Integer getMaTB() {
         return maTB != null ? maTB.getId() : null;
     }
-
+    public boolean daDatCho() { return tgdatcho==null; }
     @Override
     public String toString() {
         return "{" +
@@ -58,5 +58,4 @@ public class ThongtinsdEntity {
                 ", tgdatcho='" + getTgdatcho() + "'" +
                 "}";
     }
-
 }

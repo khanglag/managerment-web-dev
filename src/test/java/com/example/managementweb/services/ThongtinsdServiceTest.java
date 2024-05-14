@@ -66,4 +66,9 @@ public class ThongtinsdServiceTest {
         // (120191,1190308010,null,null,null,null)
 
     }
+    @Test
+    public void testThongtinsdService2() {
+        System.out.println(thongtinsdService.kiemtraThanhVienHopLe(1220102008));
+
+    }
 }
