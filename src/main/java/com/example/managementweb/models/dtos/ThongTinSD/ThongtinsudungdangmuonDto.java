@@ -1,6 +1,7 @@
 package com.example.managementweb.models.dtos.ThongTinSD;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ThongtinsudungdangmuonDto {
     @Override
@@ -17,8 +18,10 @@ public class ThongtinsudungdangmuonDto {
                 '}';
     }
 
-    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId, String maTBName, LocalDate tgvao,
-            LocalDate tgmuon, LocalDate tgtra, LocalDate tgdatcho) {
+    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId,
+            String maTBName, LocalDateTime tgvao,
+            LocalDateTime tgmuon, LocalDateTime tgtra, LocalDateTime tgdatcho) {
+
         this.id = id;
         this.maTVId = maTVId;
         this.maTBId = maTBId;
@@ -33,7 +36,7 @@ public class ThongtinsudungdangmuonDto {
     private Integer maTVId;
     private Integer maTBId;
     private String maTBName;
-    private LocalDate tgvao;
+    private LocalDateTime tgvao;
 
     public Integer getId() {
         return id;
@@ -61,10 +64,6 @@ public class ThongtinsudungdangmuonDto {
 
     public String getMaTBName() {
         return maTBName;
-    }
-
-    public void setMaTBName(String maTBName) {
-        this.maTBName = maTBName;
     }
 
     public LocalDate getTgvao() {

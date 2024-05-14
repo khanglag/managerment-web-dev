@@ -1,6 +1,6 @@
 package com.example.managementweb.repositories;
 
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
+// import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +20,7 @@ public interface ThongtinsdEntityRepository extends JpaRepository<ThongtinsdEnti
     // "WHERE tt.maTV.id = :maTVId AND tt.tgmuon IS NOT NULL AND tt.tgtra IS NULL")
     // List<ThongtinsudungdangmuonDto>
     // findThongtinsudungdangmuonDtoByMaTVId(@Param("maTVId") String maTVId);
+
+    @Query("SELECT t FROM ThongtinsdEntity t WHERE t.maTB.id = :maTBId")
+    List<ThongtinsdEntity> listTB(@Param("maTBId") String maTBId);
 }
