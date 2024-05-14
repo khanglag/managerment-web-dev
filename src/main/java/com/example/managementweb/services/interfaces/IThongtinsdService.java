@@ -17,5 +17,5 @@ public interface IThongtinsdService {
     boolean kiemtraThanhVienHopLe(int maTV);
 
 
-    boolean kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time);
+    String kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time);
 }
