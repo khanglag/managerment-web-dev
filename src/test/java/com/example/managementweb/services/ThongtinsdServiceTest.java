@@ -1,6 +1,6 @@
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.util.AppUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
