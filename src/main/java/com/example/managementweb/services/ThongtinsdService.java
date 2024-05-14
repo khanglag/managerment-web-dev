@@ -92,9 +92,9 @@ public class ThongtinsdService implements IThongtinsdService {
         return false;
     }
     @Override
-    public boolean kiemTraDatChoHopLe(int maTV, String maTB,LocalDateTime time){
-        if(kiemtraThanhVienHopLe(maTV)&&kiemTraTBMuonHopLe(maTB,time))return true;
-        return false;
+    public String kiemTraDatChoHopLe(int maTV, String maTB,LocalDateTime time){
+        if(kiemtraThanhVienHopLe(maTV)&&kiemTraTBMuonHopLe(maTB,time))return "Mượn thành công";
+        return "Mượn thất bại";
     }
 }
 
