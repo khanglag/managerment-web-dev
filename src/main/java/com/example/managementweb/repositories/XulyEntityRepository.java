@@ -11,4 +11,7 @@ import java.util.List;
 public interface XulyEntityRepository extends JpaRepository<XulyEntity, Integer> {
     @Query("SELECT p FROM XulyEntity p WHERE p.maTV.id = :id AND p.trangthaiXL = 1")
     List<XulyEntity> findByPerson(String id);
+
+    @Query("SELECT p FROM XulyEntity p WHERE p.maTV.id = :id ")
+    List<XulyEntity> findByPersonAll(String id);
 }

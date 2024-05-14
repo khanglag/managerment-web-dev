@@ -3,11 +3,20 @@ package com.example.managementweb.services.interfaces;
 import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IThongtinsdService {
 
     List<ThongtinsudungdangmuonDto> listDangMuon(String id);
 
-    boolean kiemTraMuonHopLe(String maTB);
+
+
+    boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time);
+
+
+    boolean kiemtraThanhVienHopLe(int maTV);
+
+
+    boolean kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time);
 }
