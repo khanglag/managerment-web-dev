@@ -37,12 +37,12 @@ public class ThongtinsdServiceTest {
     @Test
     public void TestReservationDevice() {
         ThanhvienEntity maTV = new ThanhvienEntity();
-        maTV.setId(1190308010);
+        maTV.setId(123456789);
         ThietbiEntity maTB = new ThietbiEntity();
-        maTB.setId(120191);
-        LocalDateTime tgvao = LocalDateTime.now();
-        LocalDateTime tgmuon = LocalDateTime.now();
-        LocalDateTime tgtra = LocalDateTime.now();
+        maTB.setId(620235);
+        LocalDateTime tgvao = null;
+        LocalDateTime tgmuon = null;
+        LocalDateTime tgtra = null;
         LocalDateTime tgdatcho = LocalDateTime.now();
 
         ThongtinsdEntity thongtinsd = new ThongtinsdEntity();
