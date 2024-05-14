@@ -1,6 +1,7 @@
 
 package com.example.managementweb.services;
 
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
 import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.models.entities.XulyEntity;
@@ -34,9 +35,9 @@ public class ThongtinsdService implements IThongtinsdService {
 
     @Override
     public boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time) {
-        List<com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
+        List<ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
-        com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
+        ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
         System.out.println(dto.toString());
         if ((dto.getTgtra() != null && dto.getTgtra().isBefore(time.minusDays(1))) &&
                 (dto.getTgdatcho() == null))
@@ -92,7 +93,7 @@ public class ThongtinsdService implements IThongtinsdService {
         return false;
     }
     @Override
-    public String kiemTraDatChoHopLe(int maTV, String maTB,LocalDateTime time){
+    public String kiemTraDatChoHopLe(int maTV, String maTB, LocalDateTime time){
         if(kiemtraThanhVienHopLe(maTV)&&kiemTraTBMuonHopLe(maTB,time))return "Mượn thành công";
         return "Mượn thất bại";
     }
