@@ -17,10 +17,8 @@ public class ThongtinsudungdangmuonDto {
                 '}';
     }
 
-    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId,
-            String maTBName, LocalDateTime tgvao,
+    public ThongtinsudungdangmuonDto(Integer id, Integer maTVId, Integer maTBId, String maTBName, LocalDateTime tgvao,
             LocalDateTime tgmuon, LocalDateTime tgtra, LocalDateTime tgdatcho) {
-
         this.id = id;
         this.maTVId = maTVId;
         this.maTBId = maTBId;
