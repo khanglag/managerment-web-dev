@@ -1,4 +1,4 @@
-package com.example.managementweb.models.dtos.ThongTinSD;
+package com.example.managementweb.models.dtos.ThietBi;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;

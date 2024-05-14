@@ -1,6 +1,5 @@
 package com.example.managementweb.services;
 
-// import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 import org.springframework.stereotype.Service;
 
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
