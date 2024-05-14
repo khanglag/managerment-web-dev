@@ -30,7 +30,10 @@ public class XuLyController {
         SimpleDateFormat sdfDisplay = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdfDisplay.setTimeZone(databaseTimeZone);
         List<XuLyReponsDtos> penalties = xulyService.findByPerson(mssv);
-
+        if (penalties.size() == 0) {
+            models.addAttribute("penalties", penalties);
+            return "View/penalties";
+        }
         LocalDateTime Ngayxl = (LocalDateTime) penalties.get(0).getNgayxl();
         String formattedTGVao = sdfDisplay.format(Date.from(Ngayxl.atZone(ZoneId.of("GMT")).toInstant()));
 

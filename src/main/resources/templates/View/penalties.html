@@ -68,6 +68,11 @@
                     <td th:text="${formattedTGVao}">Địa chỉ</td>
                     <td th:text="${penalties.trangthaiXL}">Địa chỉ</td>
                   </tr>
+                  <tr th:if="${#lists.isEmpty(penalties)}">
+                    <td colspan="6" class="text-center">
+                      Không có vi phạm nào
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
