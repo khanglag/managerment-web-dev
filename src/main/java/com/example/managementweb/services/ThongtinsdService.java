@@ -1,8 +1,8 @@
 
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
 import com.example.managementweb.models.entities.XulyEntity;
@@ -23,7 +23,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Service
 public class ThongtinsdService implements IThongtinsdService {
     @Autowired
@@ -38,7 +37,6 @@ public class ThongtinsdService implements IThongtinsdService {
     public List<ThongtinsudungdangmuonDto> listDangMuon(String id) {
         return thongtinsdEntityRepository.findThongtinsudungdangmuonDtoByMaTVId(id);
     }
-
 
     @Override
     public boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time) {
@@ -132,6 +130,5 @@ public class ThongtinsdService implements IThongtinsdService {
 
         return "Thành viên không thể mượn thiết bị";
     }
-
 
 }
