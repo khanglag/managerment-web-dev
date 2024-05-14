@@ -32,10 +32,10 @@ public class ThongtinsdServiceTest {
     // }
     // }
 
-    @Test
-    public void testThongtinsdService2() {
-        System.out.println(thongtinsdService.kiemTraMuonHopLe("420236"));
-    }
+    // @Test
+    // public void testThongtinsdService2() {
+    // System.out.println(thongtinsdService.kiemTraMuonHopLe("420236"));
+    // }
 
     @Test
     public void testCreateThongtinsd() {
@@ -66,9 +66,33 @@ public class ThongtinsdServiceTest {
         // (120191,1190308010,null,null,null,null)
 
     }
+
     @Test
     public void testThongtinsdService2() {
         System.out.println(thongtinsdService.kiemtraThanhVienHopLe(1220102008));
 
+    }
+
+    @Test
+    public void TestReservationDevice() {
+        ThanhvienEntity maTV = new ThanhvienEntity();
+        maTV.setId(1190308010);
+        ThietbiEntity maTB = new ThietbiEntity();
+        maTB.setId(120191);
+        LocalDateTime tgvao = LocalDateTime.now();
+        LocalDateTime tgmuon = LocalDateTime.now();
+        LocalDateTime tgtra = LocalDateTime.now();
+        LocalDateTime tgdatcho = LocalDateTime.now();
+
+        ThongtinsdEntity thongtinsd = new ThongtinsdEntity();
+        // thongtinsd.setId(id);
+        thongtinsd.setMaTV(maTV);
+        thongtinsd.setMaTB(maTB);
+        thongtinsd.setTgvao(tgvao);
+        thongtinsd.setTgmuon(tgmuon);
+        thongtinsd.setTgtra(tgtra);
+        thongtinsd.setTgdatcho(tgdatcho);
+
+        System.out.println(thongtinsdService.reservationDevice(thongtinsd));
     }
 }
