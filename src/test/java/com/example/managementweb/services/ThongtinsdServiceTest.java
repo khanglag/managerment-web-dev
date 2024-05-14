@@ -54,6 +54,7 @@ public class ThongtinsdServiceTest {
         thongtinsd.setTgtra(tgtra);
         thongtinsd.setTgdatcho(tgdatcho);
 
+        System.out.println("================================================");
         System.out.println(thongtinsdService.reservationDevice(thongtinsd));
     }
 }
