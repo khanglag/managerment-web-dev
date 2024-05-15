@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "thongtinsd")
 public class ThongtinsdEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaTT", nullable = false)
     private Integer id;
 
@@ -44,7 +45,11 @@ public class ThongtinsdEntity {
     public Integer getMaTB() {
         return maTB != null ? maTB.getId() : null;
     }
-    public boolean daDatCho() { return tgdatcho==null; }
+
+    public boolean daDatCho() {
+        return tgdatcho == null;
+    }
+
     @Override
     public String toString() {
         return "{" +

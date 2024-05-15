@@ -1,8 +1,8 @@
 
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsdReponsDto;
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsdReponsDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
 import com.example.managementweb.models.entities.XulyEntity;
@@ -23,7 +23,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Service
 public class ThongtinsdService implements IThongtinsdService {
     @Autowired
@@ -39,11 +38,12 @@ public class ThongtinsdService implements IThongtinsdService {
         return thongtinsdEntityRepository.findThongtinsudungdangmuonDtoByMaTVId(id);
     }
 
-
     @Override
     public boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time) {
         List<ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
+        if (listdtos.isEmpty())
+            return true;
         ThongtinsdReponsDto dto = listdtos.get(listdtos.size() - 1);
         System.out.println(dto.toString());
         if ((dto.getTgtra() != null && dto.getTgtra().isBefore(time.minusDays(1))) &&
@@ -100,9 +100,11 @@ public class ThongtinsdService implements IThongtinsdService {
         if (dto.getHinhthucXL().equals("Khóa thẻ vĩnh viễn"))
             return false;
         if (findNumberInString(dto.getHinhthucXL()) == -1 && dto.getTrangthaiXL() == 1)
-            return true;
-        if (dto.getTrangthaiXL() == 0)
             return false;
+        if (dto.getTrangthaiXL() == 0) {
+            System.out.println(dto.getTrangthaiXL());
+            return true;
+        }
         if (findNumberInString(dto.getHinhthucXL()) != -1)
             if (kiemTraNgay(dto.getNgayxl(), tinhSoNgay(findNumberInString(dto.getHinhthucXL()))))
                 return true;
@@ -122,6 +124,9 @@ public class ThongtinsdService implements IThongtinsdService {
     }
 
     public String reservationDevice(ThongtinsdEntity thongtinsd) {
+        System.out.println(thongtinsd.getMaTV());
+        System.out.println(thongtinsd.getMaTB());
+        System.out.println(thongtinsd.getTgdatcho());
         if (kiemtraThanhVienHopLe(thongtinsd.getMaTV())) {
             if (kiemTraTBMuonHopLe(thongtinsd.getMaTB().toString(), thongtinsd.getTgdatcho())) {
                 createThongtinsd(thongtinsd);
@@ -132,6 +137,5 @@ public class ThongtinsdService implements IThongtinsdService {
 
         return "Thành viên không thể mượn thiết bị";
     }
-
 
 }
