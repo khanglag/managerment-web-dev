@@ -7,6 +7,8 @@ import com.example.managementweb.models.entities.ThongtinsdEntity;
 import com.example.managementweb.util.AppUtil;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,9 @@ public class ThongtinsdServiceTest {
     @Test
     public void TestReservationDevice() {
         ThanhvienEntity maTV = new ThanhvienEntity();
-        maTV.setId(123456789);
+        maTV.setId(1190308010);
         ThietbiEntity maTB = new ThietbiEntity();
-        maTB.setId(620235);
+        maTB.setId(320201);
         LocalDateTime tgvao = null;
         LocalDateTime tgmuon = null;
         LocalDateTime tgtra = null;
@@ -56,5 +58,31 @@ public class ThongtinsdServiceTest {
 
         System.out.println("================================================");
         System.out.println(thongtinsdService.reservationDevice(thongtinsd));
+    }
+
+    @Test
+    public void testKiemTraDatCho() {
+        int maTV = 1190308010;
+        String maTB = "1201191";
+        System.out.println("================================================");
+        System.out.println(thongtinsdService.kiemTraDatChoHopLe(maTV, maTB, LocalDateTime.now()));
+    }
+
+    @Test
+    public void testKiemTraThanhVienHopLe() {
+        int maTV = 1190308010;
+        System.out.println("================================================");
+        System.out.println(thongtinsdService.kiemtraThanhVienHopLe(maTV));
+    }
+
+    @Test
+    public void testkiemTraTBMuonHopLe() {
+        String maTB = "120203";
+        String dateTimeString = "2023-05-14 15-30"; // chuỗi cần chuyển đổi
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm");
+        LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, formatter);
+
+        System.out.println("================================================");
+        System.out.println(thongtinsdService.kiemTraTBMuonHopLe(maTB, LocalDateTime.now()));
     }
 }
