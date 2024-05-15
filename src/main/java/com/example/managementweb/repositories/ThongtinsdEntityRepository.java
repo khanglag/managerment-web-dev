@@ -18,6 +18,14 @@ public interface ThongtinsdEntityRepository extends JpaRepository<ThongtinsdEnti
             "WHERE tt.maTV.id = :maTVId AND tt.tgmuon IS NOT NULL AND tt.tgtra IS NULL")
     List<ThongtinsudungdangmuonDto> findThongtinsudungdangmuonDtoByMaTVId(@Param("maTVId") String maTVId);
 
+    @Query("SELECT NEW com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto(" +
+
+            "tt.id, tt.maTV.id, tt.maTB.id, tb.tenTB, tt.tgvao, tt.tgmuon, tt.tgtra, tt.tgdatcho) " +
+            "FROM ThongtinsdEntity tt " +
+            "JOIN tt.maTB tb " + // Thực hiện phép JOIN giữa ThongtinsdEntity và ThietbiEntity
+            "WHERE tt.maTV.id = :maTVId AND tt.tgmuon IS NOT NULL")
+    List<ThongtinsudungdangmuonDto> findDeviceBorrowed(@Param("maTVId") String maTVId);
+
     @Query("SELECT t FROM ThongtinsdEntity t WHERE t.maTB.id = :maTBId")
     List<ThongtinsdEntity> listTB(@Param("maTBId") String maTBId);
 

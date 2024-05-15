@@ -9,6 +9,8 @@ public interface IThongtinsdService {
 
     List<ThongtinsudungdangmuonDto> listDangMuon(String id);
 
+    List<ThongtinsudungdangmuonDto> listDaMuon(String id);
+
     boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time);
 
     boolean kiemtraThanhVienHopLe(int maTV);

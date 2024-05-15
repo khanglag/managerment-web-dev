@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -36,9 +37,11 @@ public class XuLyController {
         }
         LocalDateTime Ngayxl = (LocalDateTime) penalties.get(0).getNgayxl();
         String formattedTGVao = sdfDisplay.format(Date.from(Ngayxl.atZone(ZoneId.of("GMT")).toInstant()));
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime parsedDateTime = LocalDateTime.parse(formattedTGVao, formatter);
+        penalties.get(0).setNgayxl(parsedDateTime);
         models.addAttribute("penalties", penalties);
-        models.addAttribute("formattedTGVao", formattedTGVao);
+
         return "View/penalties";
     }
 

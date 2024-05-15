@@ -38,8 +38,8 @@
     <header th:replace="index :: header"></header>
     <div class="container-fluid mt-3">
       <div class="row">
-        <div class="col-4" th:replace="index :: nav"></div>
-        <div class="col-8">
+        <div class="col-3" th:replace="index :: nav"></div>
+        <div class="col-9">
           <div class="container p-0 mt-5"></div>
           <div class="panel mx-auto c-mb-3">
             <div class="col-sm-12 dv-title">
@@ -65,7 +65,7 @@
                     <td th:text="${penalties.maTV}">Họ tên</td>
                     <td th:text="${penalties.hinhthucXL}">Ngày sinh</td>
                     <td th:text="${penalties.sotien}">Địa chỉ</td>
-                    <td th:text="${formattedTGVao}">Địa chỉ</td>
+                    <td th:text="${penalties.ngayxl}">Địa chỉ</td>
                     <td th:text="${penalties.trangthaiXL}">Địa chỉ</td>
                   </tr>
                   <tr th:if="${#lists.isEmpty(penalties)}">
