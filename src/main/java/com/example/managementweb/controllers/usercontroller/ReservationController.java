@@ -85,7 +85,6 @@ public class ReservationController {
         thongtinsdEntity.setMaTV(tv);
         String message = (String) thongtinsdService.reservationDevice(thongtinsdEntity);
         session.setAttribute("message", message);
-
         return "redirect:/reservation/" + id;
     }
 
