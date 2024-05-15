@@ -1,4 +1,1 @@
-// function btnReserveDevice() {
-//     event.preventDefault();
-   
-//   }
+

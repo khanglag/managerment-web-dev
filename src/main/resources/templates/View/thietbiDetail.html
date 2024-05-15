@@ -36,8 +36,8 @@
     <header th:replace="index :: header"></header>
     <div class="container-fluid mt-3">
       <div class="row">
-        <div class="col-4" th:replace="index :: nav"></div>
-        <div class="col-8">
+        <div class="col-3" th:replace="index :: nav"></div>
+        <div class="col-9">
           <div class="container p-0 mt-5"></div>
           <div class="panel mx-auto c-mb-3">
             <div class="col-sm-12 dv-title">
@@ -46,7 +46,12 @@
               >
                 Đặt chỗ thiết bị
               </h3>
-              <form action="/reservationDevice" method="post" class="">
+              <form
+                th:action="@{/reservationDevice}"
+                action="/#"
+                method="post"
+                class=""
+              >
                 <div class="form-group">
                   <label for="thietbiId">ID:</label>
                   <input
@@ -90,29 +95,32 @@
                     name="ngayGioDat"
                   />
                 </div>
-
-                <!-- Nút đặt chỗ -->
-                <button type="submit" class="btn btn-success">Đặt chỗ</button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  onclick="btnReserveDevice()"
+                >
+                  Đặt chỗ
+                </button>
               </form>
-              <div th:if="${param.datchothanhcong}">
-                <div class="alert alert-info">Đặt chỗ thành công</div>
-              </div>
-              <div th:if="${param.datchothatbai}">
-                <div class="alert alert-danger">
-                  Đặt chỗ thất bại vui lòng chọn ngày giờ khác
-                </div>
-              </div>
-              <div th:if="${param.thietbiban}">
-                <div class="alert alert-danger">
-                  Thiết bị đang được sử dụng bởi thành viên khác
-                </div>
-              </div>
+
+              <div
+                th:text="${session.message}"
+                style="color: red"
+                class="alert w-50 text-center"
+              ></div>
+              <div
+                th:text="${session.alert}"
+                style="color: red"
+                class="alert w-50 text-center"
+              ></div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <footer th:replace="index :: footer"></footer>
+    <script th:src="@{assets/js/reservation.js}"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -8,7 +8,6 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.TimeZone;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.example.managementweb.models.dtos.ThietBi.ThietbiReponsDto;
 import com.example.managementweb.models.entities.ThanhvienEntity;
 import com.example.managementweb.models.entities.ThietbiEntity;
@@ -39,9 +37,11 @@ public class ReservationController {
     private ThongtinsdService thongtinsdService;
 
     @GetMapping("/reservation")
-    public String getThietBis(Model model) {
+    public String getThietBis(Model model, HttpSession session) {
         List<ThietbiReponsDto> list = thietBiService.findAll();
         model.addAttribute("thietbisList", list);
+        session.removeAttribute("message");
+        session.removeAttribute("alert");
         return "View/reservation";
     }
 
@@ -61,8 +61,14 @@ public class ReservationController {
     }
 
     @PostMapping("/reservationDevice")
-    public String reservationDevice(HttpSession session, @RequestParam("thietbiId") String id,
-            @RequestParam("ngayGioDat") LocalDateTime date) {
+    public String reservationDevice(HttpSession session, Model model, @RequestParam("thietbiId") String id,
+            @RequestParam(value = "ngayGioDat", required = false) LocalDateTime date) {
+        if (date == null) {
+            String alert = "Vui lòng chọn ngày giờ đặt";
+            session.setAttribute("alert", alert);
+            return "redirect:/reservation/" + id;
+        }
+        session.removeAttribute("alert");
         String mssv = (String) session.getAttribute("mssv");
         TimeZone databaseTimeZone = TimeZone.getTimeZone("GMT + 7");
         SimpleDateFormat sdfDisplay = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -77,23 +83,9 @@ public class ReservationController {
         thongtinsdEntity.setMaTB(thietbiEntity);
         thongtinsdEntity.setTgdatcho(date);
         thongtinsdEntity.setMaTV(tv);
-        String tt = (String) thongtinsdService.reservationDevice(thongtinsdEntity);
-        System.out.println("=============================================");
-        System.out.println("=============================================");
-        System.out.println(maTB);
-        System.out.println(tt);
-        System.out.println("=============================================");
-        System.out.println("=============================================");
-        // if (tt.equals("Thành viên không thể mượn thiết bị")) {
-        // return "redirect:/reservation/" + maTB + "/datchothatbai";
-        // }
-        // if (tt.equals("Đặt chỗ thành công")) {
-        // return "redirect:/reservation/" + maTB + "/datchothanhcong";
-        // }
-        // if (tt.equals("Thiết bị bận")) {
-        // return "redirect:/reservation/" + maTB + "/thietbiban";
-        // }
-        return "View/reservation";
+        String message = (String) thongtinsdService.reservationDevice(thongtinsdEntity);
+        session.setAttribute("message", message);
+        return "redirect:/reservation/" + id;
     }
 
 }

@@ -38,8 +38,8 @@
     <header th:replace="index :: header"></header>
     <div class="container-fluid mt-3">
       <div class="row">
-        <div class="col-4" th:replace="index :: nav"></div>
-        <div class="col-8">
+        <div class="col-3" th:replace="index :: nav"></div>
+        <div class="col-9">
           <div class="container p-0 mt-5">
             <div class="panel mx-auto c-mb-3">
               <div class="col-sm-12 dv-title">
@@ -57,7 +57,6 @@
                       <th>Tên thiết bị</th>
                       <th>Thời gian vào</th>
                       <th>Thời gian mượn</th>
-                      <th>Thời gian đặt chỗ</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -68,11 +67,44 @@
                       <td th:text="${borrowDevice.maTBName}"></td>
                       <td th:text="${borrowDevice.tgvao}"></td>
                       <td th:text="${borrowDevice.tgmuon}"></td>
-                      <td th:text="${borrowDevice.tgdatcho}"></td>
                     </tr>
                     <tr th:if="${#lists.isEmpty(borrowDevice)}">
                       <td colspan="7" class="text-center">
-                        Không có thiết bị nào đang được mượn
+                        Không có thiết bị nào
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3
+                  class="text-left text-uppercase border-l font-bold text-2xl px-3 mt-5"
+                >
+                  Thiết bị đã mượn
+                </h3>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Mã thông tin</th>
+                      <th>Mã thành viên</th>
+                      <th>Mã thiết bị</th>
+                      <th>Tên thiết bị</th>
+                      <th>Thời gian vào</th>
+                      <th>Thời gian mượn</th>
+                      <th>Thời gian trả</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="borrowedDevice : ${borrowedDevice}">
+                      <td th:text="${borrowedDevice.id}"></td>
+                      <td th:text="${borrowedDevice.maTVId}"></td>
+                      <td th:text="${borrowedDevice.maTBId}"></td>
+                      <td th:text="${borrowedDevice.maTBName}"></td>
+                      <td th:text="${borrowedDevice.tgvao}"></td>
+                      <td th:text="${borrowedDevice.tgmuon}"></td>
+                      <td th:text="${borrowedDevice.tgtra}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(borrowedDevice)}">
+                      <td colspan="7" class="text-center">
+                        Không có thiết bị nào
                       </td>
                     </tr>
                   </tbody>

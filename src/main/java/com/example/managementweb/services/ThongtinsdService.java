@@ -39,6 +39,11 @@ public class ThongtinsdService implements IThongtinsdService {
     }
 
     @Override
+    public List<ThongtinsudungdangmuonDto> listDaMuon(String id) {
+        return thongtinsdEntityRepository.findDeviceBorrowed(id);
+    }
+
+    @Override
     public boolean kiemTraTBMuonHopLe(String maTB, LocalDateTime time) {
         List<ThongtinsdReponsDto> listdtos = thongtinsdEntityRepository.listTB(maTB)
                 .stream().map(thongtinsdMapper::toReponsDTO).collect(Collectors.toList());
