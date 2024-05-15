@@ -48,9 +48,11 @@
             <span id="name" th:text="${session.TenTV}"></span>
           </div>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="changePassword"> Đổi mật khẩu </a>
+            <a class="dropdown-item" th:href="@{/changePassword}">
+              Đổi mật khẩu
+            </a>
 
-            <a class="dropdown-item" href="signin">Đăng xuất</a>
+            <a class="dropdown-item" th:href="@{/signin}">Đăng xuất</a>
           </div>
         </div>
       </div>
@@ -60,7 +62,7 @@
         <div class="col-4" th:fragment="nav">
           <div class="profile">
             <img th:src="@{assets/images/avata.png}" class="avt" alt="" />
-            <h3 th:text="${session.TenTV}" class="text-name"></h3>
+            <h3 th:text="${session.TenTV}" class="text-name mt-2"></h3>
             <h4 class="member">Thành viên</h4>
           </div>
           <div class="menu">
@@ -72,19 +74,19 @@
             <ul class="custom-list">
               <li>
                 <i class="fa-solid fa-user"></i>
-                <a href="profile" class="active">Thông tin cá nhân</a>
+                <a th:href="@{/profile}" class="active">Thông tin cá nhân</a>
               </li>
               <li>
                 <i class="fa-solid fa-circle-exclamation"></i>
-                <a href="penalties">Trạng thái vi phạm</a>
+                <a th:href="@{/penalties}">Trạng thái vi phạm</a>
               </li>
               <li>
                 <i class="fa-solid fa-place-of-worship"></i>
-                <a href="reservation">Đặt chỗ thiết bị</a>
+                <a th:href="@{/reservation}">Đặt chỗ thiết bị</a>
               </li>
               <li>
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                <a href="borrowdevice">Thiết bị đang mượn</a>
+                <a th:href="@{/borrowdevice}">Thiết bị đang mượn</a>
               </li>
             </ul>
           </div>

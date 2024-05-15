@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -33,8 +33,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-</head>
-<body>
+  </head>
+  <body>
     <header th:replace="index :: header"></header>
     <div class="container-fluid mt-3">
       <div class="row">
@@ -43,14 +43,31 @@
           <div class="container p-0 mt-5"></div>
           <div class="panel mx-auto c-mb-3">
             <div class="col-sm-12 dv-title">
-              
               <h3
                 class="text-left text-uppercase border-l font-bold text-2xl px-3"
               >
                 Đặt chỗ thiết bị
               </h3>
+
+              <form action="/findDevice" method="POST" class="d-flex mb-4">
+                <input
+                  class="form-control w-50 mt-3"
+                  type="text"
+                  placeholder="Nhập tên thiết bị"
+                  name="tenTB"
+                />
+                <button
+                  type="submit"
+                  class="btn btn-success ml-2"
+                  style="margin-top: 14px; height: 39px"
+                >
+                  Tìm kiếm
+                </button>
+              </form>
+
               <div id="detail"></div>
-              <div id="deviceTableWrapper"> <!-- Wrapper div for the table to hide/show -->
+              <div id="deviceTableWrapper">
+                <!-- Wrapper div for the table to hide/show -->
                 <table id="deviceTable" class="table table-bordered">
                   <thead>
                     <tr>
@@ -65,7 +82,14 @@
                       <td class="id" th:text="${thietbi.id}"></td>
                       <td th:text="${thietbi.tenTB}"></td>
                       <td th:text="${thietbi.motaTB}"></td>
-                      <td><button class="selectRow">Chọn</button></td>
+                      <td>
+                        <!-- <button class="selectRow btn btn-success">Chọn</button> -->
+                        <a
+                          th:href="@{/reservation/{id}(id=${thietbi.id})}"
+                          class="selectRow btn btn-success"
+                          >Chọn</a
+                        >
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -76,11 +100,10 @@
       </div>
     </div>
 
-    
-    
     <footer th:replace="index :: footer"></footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{assets/js/reservation.js}"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -100,8 +123,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <script>
-      $(document).ready(function() {
-        $(".selectRow").click(function() {
+      $(document).ready(function () {
+        $(".selectRow").click(function () {
           $("#deviceTableWrapper").hide(); // Ẩn bảng khi nhấn nút "Chọn"
           // Lấy ID từ cột ID trong hàng chứa nút đã nhấn
           var id = $(this).closest("tr").find(".id").text();
@@ -109,10 +132,10 @@
           $.ajax({
             type: "GET",
             url: "/reservation/" + id, // Đường dẫn phải thay đổi tùy theo cấu trúc của ứng dụng của bạn
-            success: function(data) {
+            success: function (data) {
               // Hiển thị thông tin chi tiết trong phần tử có ID là "detail"
               $("#detail").html(data);
-            }
+            },
           });
         });
       });

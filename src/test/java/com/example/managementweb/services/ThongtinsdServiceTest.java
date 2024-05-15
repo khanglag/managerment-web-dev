@@ -1,6 +1,6 @@
 package com.example.managementweb.services;
 
-import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.entities.ThanhvienEntity;
 import com.example.managementweb.models.entities.ThietbiEntity;
 import com.example.managementweb.models.entities.ThongtinsdEntity;
