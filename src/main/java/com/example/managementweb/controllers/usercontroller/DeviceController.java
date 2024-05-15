@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.managementweb.models.dtos.ThongTinSD.ThongtinsudungdangmuonDto;
+import com.example.managementweb.models.dtos.Thongtinsd.ThongtinsudungdangmuonDto;
 import com.example.managementweb.models.dtos.Xuly.XuLyReponsDtos;
 import com.example.managementweb.services.ThongtinsdService;
 import com.example.managementweb.services.XuLyService;
